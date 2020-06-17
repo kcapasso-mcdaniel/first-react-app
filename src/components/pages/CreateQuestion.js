@@ -5,9 +5,9 @@ export default function CreateQuestion() {
       <div className="container">
          <div className="row">
             <div className="col-12">
-               <h1>Knowledge Check</h1>
+               <h1>Create Question</h1>
                <div className="col-6">
-                  <p>This is my first React app</p>
+                  <p>This is where you create a question.</p>
                </div>
             </div>
          </div>
