@@ -1,6 +1,6 @@
 import React from "react";
-import Navigation from "../pages/ui/Navigation";
-import QuestionList from "../pages/ui/QuestionList";
+import Navigation from "../ui/Navigation";
+import QuestionList from "../ui/QuestionList";
 
 export default function CreatedQuestionList() {
    return (

@@ -1,6 +1,6 @@
 import React from "react";
-import Navigation from "../pages/ui/Navigation";
-import QuestionTemplate from "../pages/ui/QuestionTemplate";
+import Navigation from "../ui/Navigation";
+import QuestionTemplate from "../ui/QuestionTemplate";
 
 export default function CreateQuestion() {
    return (
