@@ -12,13 +12,6 @@ h3 {
    width: 32px;
    height: 32px;
 }
-.background-image {
-   background: url("../img/background-image.jpg") no-repeat center fixed;
-   background-size: cover;
-   // spread image across 100% of the viewport
-   height: 100vh;
-}
-
 .btn {
    font-size: $font-size-base;
    font-family: $font-family-sans-serif;
@@ -26,8 +19,8 @@ h3 {
    padding: 5px, 0px, 5px, 0px;
 }
 .btn-group {
-   font-weight: 400;
+   padding: 2px;
 }
-.user-input {
-   padding: 5px;
+h1 {
+   font-size: $font-size-base * 1.25;
 }

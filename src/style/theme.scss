@@ -1,4 +1,4 @@
-$blue: green;
+$blue: blue;
 $indigo: #6610f2;
 $purple: #6f42c1;
 $pink: #e83e8c;
@@ -30,9 +30,9 @@ $colors: map-merge(
    $colors
 );
 
-$primary: $blue;
+$primary: $green;
 $secondary: $gray-600;
-$success: $green;
+$success: $orange;
 $info: $cyan;
 $warning: $yellow;
 $danger: $red;
@@ -120,6 +120,8 @@ $card-spacer-x: map-get(
    $map: $spacers,
    $key: 4,
 );
+
+$card-border-color: $secondary;
 $card-border-width: $border-width;
 $card-border-radius: $border-radius;
 
@@ -131,7 +133,7 @@ $border-color: $primary;
 
 $border-radius: map-get(
    $map: $spacers,
-   $key: 1,
+   $key: 4,
 );
 $border-radius-lg: $border-radius;
 $border-radius-sm: $border-radius;
@@ -172,7 +174,7 @@ $input-btn-line-height-lg: $line-height-base;
 
 //Buttons
 
-$btn-font-weight: $font-weight-bold;
+$btn-font-weight: $font-weight-normal;
 
 $btn-padding-y: $input-btn-padding-y;
 $btn-padding-x: $input-btn-padding-x;

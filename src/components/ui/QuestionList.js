@@ -1,8 +1,12 @@
 import React from "react";
+import downCaret from "../../icons/caret-down.svg";
+import rightCaret from "../../icons/caret-right.svg";
 
 export default function QuestionList() {
    return (
       <div className="col-6">
+         <img src={downCaret} alt="" />
+         <img src={rightCaret} alt="" />
          <h3 className="d-inline">Question will go here </h3>
          <div className="custom-control custom-radio">
             <input
