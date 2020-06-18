@@ -18,7 +18,7 @@ function App() {
             <Route exact path="/create-question" component={CreateQuestion} />
             <Route
                exact
-               path="/created-questions-list"
+               path="/created-question-list"
                component={CreatedQuestionList}
             />
             <Route

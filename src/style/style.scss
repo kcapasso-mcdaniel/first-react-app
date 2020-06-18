@@ -1,0 +1,33 @@
+h3 {
+   margin-top: 2px;
+   margin-bottom: 10px;
+}
+
+.custom-control {
+   margin-left: 32px;
+   margin-top: 12px;
+   margin-bottom: 8px;
+}
+.task {
+   width: 32px;
+   height: 32px;
+}
+.background-image {
+   background: url("../img/background-image.jpg") no-repeat center fixed;
+   background-size: cover;
+   // spread image across 100% of the viewport
+   height: 100vh;
+}
+
+.btn {
+   font-size: $font-size-base;
+   font-family: $font-family-sans-serif;
+   font-weight: 400;
+   padding: 5px, 0px, 5px, 0px;
+}
+.btn-group {
+   font-weight: 400;
+}
+.user-input {
+   padding: 5px;
+}
