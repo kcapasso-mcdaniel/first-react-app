@@ -12,9 +12,7 @@ export default function UserAssignedQuestions() {
                <UserQuestion />
                <UserQuestion />
                <UserQuestion />
-               <button className="btn-lg btn-primary float-right">
-                  Submit questions
-               </button>
+               <button className="btn-lg btn-primary mt-4 ml-4">Submit</button>
             </div>
          </div>
       </div>

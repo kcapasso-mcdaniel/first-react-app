@@ -16,9 +16,9 @@ export default function QuestionTemplate() {
                Answer
             </label>
             <div className="col-sm-10">
-               <input type="email" className="form-control" />
+               <input type="answerOutput" className="form-control" />
             </div>
-            <button className="btn btn-warning">Clear</button>
+            <button className="btn btn-warning">Delete</button>
          </div>
          <div className="form-group row">
             <label
@@ -30,7 +30,7 @@ export default function QuestionTemplate() {
             <div className="col-sm-10">
                <input type="email" className="form-control" />
             </div>
-            <button className="btn btn-warning">Clear</button>
+            <button className="btn btn-warning">Delete</button>
          </div>
          <div className="form-group row">
             <label
@@ -42,7 +42,7 @@ export default function QuestionTemplate() {
             <div className="col-sm-10">
                <input type="email" className="form-control" />
             </div>
-            <button className="btn btn-warning">Clear</button>
+            <button className="btn btn-warning">Delete</button>
          </div>
          <div className="form-group row">
             <label
@@ -54,11 +54,13 @@ export default function QuestionTemplate() {
             <div className="col-sm-10">
                <input type="email" className="form-control" />
             </div>
-            <button className="btn btn-warning">Clear</button>
+            <button className="btn btn-warning">Delete</button>
          </div>
-         <button className="btn-success btn-lg">Add answer</button>
+         <button className="btn-success btn-lg ml-3">Add answer</button>
          {/* this would refresh the page */}
-         <button className="btn-dark btn-lg">Delete Question</button>
+         <Link to="/create-question" className="btn-lg btn-warning py-3 ml-3">
+            Delete Question
+         </Link>
          {/* this would also refresh the page */}
          <Link
             to="created-question-list"

@@ -1,7 +1,8 @@
 import React from "react";
 import downCaret from "../../icons/caret-down.svg";
 import rightCaret from "../../icons/caret-right.svg";
-import { FaCheck } from "react-icons/fa";
+import { BsCheck } from "react-icons/bs";
+import { BsX } from "react-icons/bs";
 
 export default function QuestionList() {
    return (
@@ -13,7 +14,8 @@ export default function QuestionList() {
             style={{ marginTop: "3px", marginRight: "4px" }}
          />
          <h3 className="d-inline">Question will go here </h3>
-         <FaCheck style={{ marginLeft: "5px" }} />
+         <BsCheck style={{ marginLeft: "5px" }} />
+         <BsX style={{ marginLeft: "5px" }} />
          <div className="custom-control custom-radio">
             <input
                type="radio"
