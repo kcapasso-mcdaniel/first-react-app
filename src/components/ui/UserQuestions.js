@@ -1,15 +1,19 @@
 import React from "react";
 import downCaret from "../../icons/caret-down.svg";
 import rightCaret from "../../icons/caret-right.svg";
+import { FaCheck } from "react-icons/fa";
 
 export default function QuestionList() {
    return (
       <div className="col-12">
-         <img src={rightCaret} alt="" />
-         <img src={downCaret} alt="" />
+         <img src={rightCaret} alt="" style={{ marginTop: "2px" }} />
+         <img
+            src={downCaret}
+            alt=""
+            style={{ marginTop: "3px", marginRight: "4px" }}
+         />
          <h3 className="d-inline">Question will go here </h3>
-         <input className="autoComplete"></input>
-
+         <FaCheck style={{ marginLeft: "5px" }} />
          <div className="custom-control custom-radio">
             <input
                type="radio"

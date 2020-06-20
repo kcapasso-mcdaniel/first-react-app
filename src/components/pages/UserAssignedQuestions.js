@@ -1,14 +1,20 @@
 import React from "react";
+import Navigation from "../ui/Navigation";
+import UserQuestion from "../ui/UserQuestions";
 
 export default function UserAssignedQuestions() {
    return (
       <div className="container">
          <div className="row">
             <div className="col-12">
-               <h1>Questions Assigned To User</h1>
-               <div className="col-6">
-                  <p>These are the questions assigned to the user</p>
-               </div>
+               <Navigation />
+               <UserQuestion />
+               <UserQuestion />
+               <UserQuestion />
+               <UserQuestion />
+               <button className="btn-lg btn-primary float-right">
+                  Submit questions
+               </button>
             </div>
          </div>
       </div>

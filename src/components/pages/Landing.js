@@ -1,21 +1,21 @@
 import React from "react";
 import checkIcon from "../../icons/Check2 -square.svg";
-// import backgroundImage from "../../img/background-image.jpg";
+import { Link } from "react-router-dom";
 
 export default function Landing() {
    return (
       <div className="background-image">
-         <div className="container">
-            <div className="row mt-3">
-               <div className="col-12">
-                  <h1>Knowledge</h1>
+         <div className="container-fluid">
+            <div className="row">
+               <div className="col-6">
+                  <h1 className="d-inline ml-4">Knowledge</h1>
                   <img
                      src={checkIcon}
                      alt=""
-                     style={{ marginLeft: "3px", marginBottom: "5px" }}
+                     style={{ marginLeft: "4px", marginBottom: "6px" }}
                   />
                </div>
-               <div className="col-12">
+               <div className="col-8 offset-2 mt-4">
                   <div className="card bg-secondary">
                      <div className="card-body">
                         <h2 className="card-title">Welcome to the Team!</h2>
@@ -42,7 +42,12 @@ export default function Landing() {
                         <input className="form-control" />
                         <p>Password</p>
                         <input className="form-control" />
-                        <button className="btn btn-primary">Log in</button>
+                        <Link
+                           to="user-assigned-questions"
+                           className="btn btn-primary"
+                        >
+                           Log in
+                        </Link>
                      </div>
                   </div>
                </div>
