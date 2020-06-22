@@ -3,8 +3,6 @@ import Navigation from "../ui/Navigation";
 import { Link } from "react-router-dom";
 import Question from "../ui/Question";
 import questions from "../../data/questions";
-const question = questions[1];
-console.log(question);
 
 export default function UserAssignedQuestions() {
    return (
@@ -14,7 +12,13 @@ export default function UserAssignedQuestions() {
                <Navigation />
 
                {questions.map((question) => {
-                  return <Question title={question.title} key={question.id} />;
+                  return (
+                     <Question
+                        title={question.title}
+                        answers={question.answers}
+                        key={question.id}
+                     />
+                  );
                })}
 
                <Link to="create-question" className="btn btn-outline-primary">

@@ -1,6 +1,5 @@
 import React from "react";
 import Navigation from "../ui/Navigation";
-import UserQuestions from "../ui/UserQuestions";
 
 export default function UserReports() {
    return (
@@ -19,10 +18,6 @@ export default function UserReports() {
                         <li>Questions Correct: 4</li>
                         <li>Questions Incorrect: 0</li>
                      </ul>
-                     <UserQuestions />
-                     <UserQuestions />
-                     <UserQuestions />
-                     <UserQuestions />
                   </div>
                </div>
             </div>

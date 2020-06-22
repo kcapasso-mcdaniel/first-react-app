@@ -1,58 +1,26 @@
 import React from "react";
 
-export default function Question() {
-   return (
-      <div className="col-12">
-         <h4 className="d-inline">Title</h4>
+export default class Question extends React.Component {
+   render() {
+      const props = this.props;
+      return (
+         <div className="col-12">
+            <h4 className="d-inline">{props.title}</h4>
 
-         <div className="custom-control custom-radio">
-            <input
-               type="radio"
-               id="customRadio1"
-               name="customRadio"
-               className="custom-control-input"
-            />
-            <label
-               className="custom-control-label"
-               htmlFor="customRadio1"
-            ></label>
+            {props.answers.map((answer) => (
+               <div className="custom-control custom-radio">
+                  <input
+                     type="radio"
+                     name={answer.text}
+                     id={answer.text}
+                     className="custom-control-input"
+                  />
+                  <label className="custom-control-label" htmlFor={answer.text}>
+                     {answer.text}
+                  </label>
+               </div>
+            ))}
          </div>
-         <div className="custom-control custom-radio">
-            <input
-               type="radio"
-               id="customRadio2"
-               name="customRadio"
-               className="custom-control-input"
-            />
-            <label
-               className="custom-control-label"
-               htmlFor="customRadio2"
-            ></label>
-         </div>
-         <div className="custom-control custom-radio">
-            <input
-               type="radio"
-               id="customRadio3"
-               name="customRadio"
-               className="custom-control-input"
-            />
-            <label
-               className="custom-control-label"
-               htmlFor="customRadio3"
-            ></label>
-         </div>
-         <div className="custom-control custom-radio">
-            <input
-               type="radio"
-               id="customRadio4"
-               name="customRadio"
-               className="custom-control-input"
-            />
-            <label
-               className="custom-control-label"
-               htmlFor="customRadio4"
-            ></label>
-         </div>
-      </div>
-   );
+      );
+   }
 }
