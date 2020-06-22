@@ -1,4 +1,4 @@
-[
+const questions = [
    {
       id: "faab410d-8502-4367-9d48-5b02bdee9801",
       createdByUserId: "61d7d1be-4ada-4c1a-81c0-c6b82f45132e",
@@ -176,3 +176,5 @@
       ],
    },
 ];
+
+export default questions;

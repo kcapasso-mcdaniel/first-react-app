@@ -1,5 +1,5 @@
 import React from "react";
-import checkIcon from "../../icons/Check2 -square.svg";
+import checkIcon from "../../icons/landing-check.svg";
 import { Link } from "react-router-dom";
 
 export default function Landing() {

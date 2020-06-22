@@ -1,14 +1,9 @@
 import React from "react";
-import downCaret from "../../icons/caret-down.svg";
-import rightCaret from "../../icons/caret-right.svg";
 
-export default function QuestionList() {
+export default function Question() {
    return (
       <div className="col-12">
-         <img src={rightCaret} alt="" />
-         <img src={downCaret} alt="" />
-         <h3 className="d-inline">Question will go here </h3>
-         <input className="autoComplete"></input>
+         <h4 className="d-inline">Title</h4>
 
          <div className="custom-control custom-radio">
             <input
@@ -17,9 +12,10 @@ export default function QuestionList() {
                name="customRadio"
                className="custom-control-input"
             />
-            <label className="custom-control-label" htmlFor="customRadio1">
-               Answer
-            </label>
+            <label
+               className="custom-control-label"
+               htmlFor="customRadio1"
+            ></label>
          </div>
          <div className="custom-control custom-radio">
             <input
@@ -28,9 +24,10 @@ export default function QuestionList() {
                name="customRadio"
                className="custom-control-input"
             />
-            <label className="custom-control-label" htmlFor="customRadio2">
-               Answer
-            </label>
+            <label
+               className="custom-control-label"
+               htmlFor="customRadio2"
+            ></label>
          </div>
          <div className="custom-control custom-radio">
             <input
@@ -39,9 +36,10 @@ export default function QuestionList() {
                name="customRadio"
                className="custom-control-input"
             />
-            <label className="custom-control-label" htmlFor="customRadio3">
-               Answer
-            </label>
+            <label
+               className="custom-control-label"
+               htmlFor="customRadio3"
+            ></label>
          </div>
          <div className="custom-control custom-radio">
             <input
@@ -50,9 +48,10 @@ export default function QuestionList() {
                name="customRadio"
                className="custom-control-input"
             />
-            <label className="custom-control-label" htmlFor="customRadio4">
-               Answer
-            </label>
+            <label
+               className="custom-control-label"
+               htmlFor="customRadio4"
+            ></label>
          </div>
       </div>
    );

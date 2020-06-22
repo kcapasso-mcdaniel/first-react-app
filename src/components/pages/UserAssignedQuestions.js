@@ -1,6 +1,9 @@
 import React from "react";
 import Navigation from "../ui/Navigation";
-import UserQuestion from "../ui/UserQuestions";
+import Question from "../ui/Question";
+import questions from "../../data/questions";
+const question = questions[1];
+console.log(question);
 
 export default function UserAssignedQuestions() {
    return (
@@ -8,10 +11,17 @@ export default function UserAssignedQuestions() {
          <div className="row">
             <div className="col-12">
                <Navigation />
-               <UserQuestion />
-               <UserQuestion />
-               <UserQuestion />
-               <UserQuestion />
+
+               {questions.map((question) => {
+                  return (
+                     <Question
+                        title={question.title}
+                        answers={question.answers}
+                        key={question.id}
+                     />
+                  );
+               })}
+
                <button className="btn-lg btn-primary mt-4 ml-4">Submit</button>
             </div>
          </div>

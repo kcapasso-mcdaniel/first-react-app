@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function QuestionTemplate() {
+export default function CreateQuestion() {
    return (
       <>
          <div className="form-group">
