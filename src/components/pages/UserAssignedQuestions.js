@@ -25,7 +25,10 @@ export default class UserAssignedQuestions extends React.Component {
                      );
                   })}
 
-                  <button className="btn-lg btn-primary mt-4 ml-4">
+                  <button
+                     type="submit"
+                     className="btn-lg btn-primary mt-4 ml-4"
+                  >
                      Submit
                   </button>
                </div>
