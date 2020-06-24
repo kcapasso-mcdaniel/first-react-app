@@ -11,11 +11,73 @@ export default class SignUp extends React.Component {
          lastNameError: "",
          emailError: "",
          passwordError: "",
+         hasEmailError: false,
+         hasPasswordError: false,
       };
    }
 
    displayTheInputs() {
       this.setState({ isDisplayingSignUpForm: true });
+   }
+
+   setEmailIsValidState(signUpUserEmailInput) {
+      const lowerCaseEmailInput = signUpUserEmailInput.toLowerCase();
+
+      //   check that email address is valid with regex
+      // eslint-disable-next-line
+      const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      if (signUpUserEmailInput === "")
+         this.setState({
+            emailError: "Please enter your email address.",
+            hasEmailError: true,
+         });
+      else if (emailRegex.test(lowerCaseEmailInput) === false) {
+         this.setState({
+            emailError: "Please enter a valid email address",
+            hasEmailError: true,
+         });
+      } else {
+         this.setState({ emailError: "", hasEmailError: false });
+      }
+   }
+
+   checkForLocalPart(signUpUserPasswordInput, signUpUserEmailInput) {
+      const localPart = signUpUserEmailInput.split("@")[0];
+      if (localPart.length < 4) return false;
+      else return signUpUserPasswordInput.includes(localPart);
+   }
+
+   setPasswordIsValidState(signUpUserPasswordInput, signUpUserEmailInput) {
+      console.log(signUpUserPasswordInput);
+      const uniqPasswordInputChars = [...new Set(signUpUserPasswordInput)];
+      console.log(uniqPasswordInputChars);
+      if (signUpUserPasswordInput === "") {
+         this.setState({
+            passwordError: "Please create a password",
+            hasPasswordError: true,
+         });
+      } else if (signUpUserPasswordInput.length < 9) {
+         this.setState({
+            passwordError: "Your password must be at least 9 characters.",
+            hasPasswordError: true,
+         });
+      } else if (
+         this.checkForLocalPart(signUpUserPasswordInput, signUpUserEmailInput)
+      ) {
+         this.setState({
+            passwordError:
+               "Your password cannot contain the local part of the email",
+            hasPasswordError: true,
+         });
+      } else if (uniqPasswordInputChars.length < 3) {
+         this.setState({
+            passwordError:
+               "Password must contain at least 3 unique characters.",
+            hasPasswordError: true,
+         });
+      } else {
+         this.setState({ passwordError: "", hasPasswordError: false });
+      }
    }
 
    createAndValidateUser() {
@@ -41,19 +103,16 @@ export default class SignUp extends React.Component {
       ).value;
       console.log(signUpUserEmailInput);
 
-      const lowerCaseEmailInput = signUpUserEmailInput.toLowerCase();
-      //   check that email address is valid with regex
-      // eslint-disable-next-line
-      const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-      //   if user input is blank set the state to display the error message
-      if (signUpUserEmailInput === "")
-         this.setState({ emailError: "Please enter your email address." });
-      //  if the email input does not contain any regex expression comparisions set the state to the error message
-      else if (emailRegex.test(lowerCaseEmailInput) === false) {
-         this.setState({ emailError: "Please enter a valid email address" });
-      } else {
-         this.setState({ emailError: "" });
-      }
+      // get the value of the user password input
+      const signUpUserPasswordInput = document.getElementById(
+         "signup-user-password-input"
+      ).value;
+      console.log(signUpUserPasswordInput);
+      this.setEmailIsValidState(signUpUserEmailInput);
+      this.setPasswordIsValidState(
+         signUpUserPasswordInput,
+         signUpUserEmailInput
+      );
    }
 
    render() {
@@ -97,19 +156,26 @@ export default class SignUp extends React.Component {
                            type="email"
                            className={classnames({
                               "form-control": true,
-                              "is-invalid": this.state.emailError,
+                              "is-invalid": this.state.hasEmailError,
                            })}
                            id="signup-user-email-input"
                         />
                         <p className="text-danger">{this.state.emailError}</p>
+
                         <label htmlFor="signup-user-password-input">
                            Password
                         </label>
                         <input
                            type="password"
-                           className="form-control"
+                           className={classnames({
+                              "form-control": true,
+                              "is-invalid": this.state.hasPasswordError,
+                           })}
                            id="signup-user-password-input"
                         />
+                        <p className="text-danger">
+                           {this.state.passwordError}
+                        </p>
                         <button
                            type="submit"
                            className="form-control btn btn-primary mt-2"
