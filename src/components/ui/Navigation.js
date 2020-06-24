@@ -5,12 +5,14 @@ import headerIcon from "../../icons/header-check.svg";
 export default function Navigation() {
    return (
       <>
-         <h2 className="d-inline ml-2 mb-2">Knowledge</h2>
-         <img
-            src={headerIcon}
-            alt=""
-            style={{ marginLeft: "6px", marginBottom: "6px" }}
-         />
+         <div className="col-12 offset-4">
+            <h2 className="d-inline ml-2 mb-2">Knowledge</h2>
+            <img
+               src={headerIcon}
+               alt=""
+               style={{ marginLeft: "6px", marginBottom: "6px" }}
+            />
+         </div>
          <div
             className="btn-group d-flex mt-1 mb-5"
             role="navigation"

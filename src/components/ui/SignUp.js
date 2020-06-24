@@ -1,5 +1,7 @@
 import React from "react";
 import classnames from "classnames";
+import hash from "object-hash";
+import { v4 as getUuid } from "uuid";
 
 export default class SignUp extends React.Component {
    constructor(props) {
@@ -20,7 +22,7 @@ export default class SignUp extends React.Component {
       this.setState({ isDisplayingSignUpForm: true });
    }
 
-   setEmailIsValidState(signUpUserEmailInput) {
+   async setEmailIsValidState(signUpUserEmailInput) {
       const lowerCaseEmailInput = signUpUserEmailInput.toLowerCase();
 
       //   check that email address is valid with regex
@@ -47,7 +49,10 @@ export default class SignUp extends React.Component {
       else return signUpUserPasswordInput.includes(localPart);
    }
 
-   setPasswordIsValidState(signUpUserPasswordInput, signUpUserEmailInput) {
+   async setPasswordIsValidState(
+      signUpUserPasswordInput,
+      signUpUserEmailInput
+   ) {
       console.log(signUpUserPasswordInput);
       const uniqPasswordInputChars = [...new Set(signUpUserPasswordInput)];
       console.log(uniqPasswordInputChars);
@@ -80,19 +85,20 @@ export default class SignUp extends React.Component {
       }
    }
 
-   createAndValidateUser() {
+   async createAndValidateUser() {
       //    get the value of the first name
-      const userFirstName = document.getElementById("user-first-name").value;
-      console.log(userFirstName);
-      if (userFirstName === "")
+      const userFirstNameInput = document.getElementById("user-first-name")
+         .value;
+      console.log(userFirstNameInput);
+      if (userFirstNameInput === "")
          this.setState({ firstNameError: "Field cannot be left blank" });
       else {
          this.setState({ firstNameError: "" });
       }
       //    get the value of the last name
-      const userLastName = document.getElementById("user-last-name").value;
-      console.log(userLastName);
-      if (userLastName === "")
+      const userLastNameInput = document.getElementById("user-last-name").value;
+      console.log(userLastNameInput);
+      if (userLastNameInput === "")
          this.setState({ lastNameError: "Field cannot be left blank" });
       else {
          this.setState({ lastNameError: "" });
@@ -108,19 +114,33 @@ export default class SignUp extends React.Component {
          "signup-user-password-input"
       ).value;
       console.log(signUpUserPasswordInput);
-      this.setEmailIsValidState(signUpUserEmailInput);
-      this.setPasswordIsValidState(
+      await this.setEmailIsValidState(signUpUserEmailInput);
+      await this.setPasswordIsValidState(
          signUpUserPasswordInput,
          signUpUserEmailInput
       );
+      if (
+         this.state.hasEmailError === false &&
+         this.state.hasPasswordError === false
+      ) {
+         const user = {
+            createId: getUuid(),
+            firstName: userFirstNameInput,
+            lastName: userLastNameInput,
+            userEmail: signUpUserEmailInput,
+            userPassword: hash(signUpUserPasswordInput),
+            createdOn: Date.now(),
+         };
+         console.log(user);
+      }
    }
 
    render() {
       return (
-         <div className="col-xl-5 col-sm-6 col-12">
+         <div className="col-xl-5 col-sm-6 col-12 mt-2">
             <div className="card">
                <div className="card-body">
-                  <h2 className="card-title">Welcome to the Team!</h2>
+                  <h2 className="card-title">New to the team?</h2>
                   <h3>Click below to sign up!</h3>
 
                   {this.state.isDisplayingSignUpForm && (

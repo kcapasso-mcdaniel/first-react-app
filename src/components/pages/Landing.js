@@ -8,12 +8,15 @@ export default function Landing() {
       <div className="background-image">
          <div className="container-fluid">
             <div className="row">
-               <div className="col-12">
+               <div className="col-xl-4 offset-2 mt-2">
                   <h1 className="d-inline">Knowledge</h1>
                   <img
                      src={checkIcon}
                      alt=""
-                     style={{ marginLeft: "4px", marginBottom: "6px" }}
+                     style={{
+                        marginLeft: "8px",
+                        marginBottom: "8px",
+                     }}
                   />
                </div>
                <SignUp />
