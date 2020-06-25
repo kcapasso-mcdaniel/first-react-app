@@ -15,22 +15,30 @@ export default class UserAssignedQuestions extends React.Component {
             <div className="row">
                <div className="col-12">
                   <Navigation />
-                  {questions.map((question) => {
-                     return (
-                        <Question
-                           title={question.title}
-                           answers={question.answers}
-                           key={question.id}
-                        />
-                     );
-                  })}
+                  <h4 className="mb-4">
+                     Please complete the quiz below. There is one correct answer
+                     for each question.
+                  </h4>
+                  <div className="col-12">
+                     <form>
+                        {questions.map((question) => {
+                           return (
+                              <Question
+                                 title={question.title}
+                                 answers={question.answers}
+                                 key={question.id}
+                              />
+                           );
+                        })}
 
-                  <button
-                     type="submit"
-                     className="btn-lg btn-primary mt-4 ml-4"
-                  >
-                     Submit
-                  </button>
+                        <button
+                           type="submit"
+                           className="btn-lg btn-primary mt-4 ml-4"
+                        >
+                           Submit
+                        </button>
+                     </form>
+                  </div>
                </div>
             </div>
          </div>
