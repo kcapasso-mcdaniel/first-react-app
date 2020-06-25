@@ -20,42 +20,7 @@ export default function CreateQuestion() {
             </div>
             <button className="btn btn-warning">Delete</button>
          </div>
-         <div className="form-group row">
-            <label
-               htmlFor="answer-text"
-               className="col-sm-2 col-form-label ml-2"
-            >
-               Answer
-            </label>
-            <div className="col-sm-10">
-               <input type="text" className="form-control" id="answer-text" />
-            </div>
-            <button className="btn btn-warning">Delete</button>
-         </div>
-         <div className="form-group row">
-            <label
-               htmlFor="answer-text"
-               className="col-sm-2 col-form-label ml-2"
-            >
-               Answer
-            </label>
-            <div className="col-sm-10">
-               <input type="text" className="form-control" id="answer-text" />
-            </div>
-            <button className="btn btn-warning">Delete</button>
-         </div>
-         <div className="form-group row">
-            <label
-               htmlFor="answer-text"
-               className="col-sm-2 col-form-label ml-2"
-            >
-               Answer
-            </label>
-            <div className="col-sm-10">
-               <input type="text" className="form-control" id="answer-text" />
-            </div>
-            <button className="btn btn-warning">Delete</button>
-         </div>
+
          <button type="buttons" className="btn-success btn-lg ml-3">
             Add answer
          </button>

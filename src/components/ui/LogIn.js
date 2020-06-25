@@ -175,7 +175,6 @@ export default class LogIn extends React.Component {
                         )}
                         <button
                            type="submit"
-                           to="user-assigned-questions"
                            className="form-control btn btn-primary mt-2"
                            onClick={() => {
                               this.createAndValidateUser();
