@@ -8,7 +8,7 @@ export default function Landing() {
       <div className="background-image">
          <div className="container-fluid">
             <div className="row">
-               <div className="col-12 mt-2">
+               <div className="col-12 mt-4">
                   <h1 className="d-inline">Knowledge</h1>
                   <img
                      src={checkIcon}

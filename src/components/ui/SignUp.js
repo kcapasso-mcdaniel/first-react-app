@@ -137,7 +137,7 @@ export default class SignUp extends React.Component {
 
    render() {
       return (
-         <div className="col-xl-5 col-sm-6 col-12 mt-2">
+         <div className="col-xl-5 col-sm-6 col-12 mt-6">
             <div className="card">
                <div className="card-body">
                   <h2 className="card-title">New to the team?</h2>

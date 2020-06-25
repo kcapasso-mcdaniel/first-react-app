@@ -2,11 +2,12 @@ import React from "react";
 import classnames from "classnames";
 import hash from "object-hash";
 import { v4 as getUuid } from "uuid";
+import { Link } from "react-router-dom";
 
 export default class LogIn extends React.Component {
    constructor(props) {
       super(props);
-      console.log("In a new class component");
+      console.log("new component");
       this.state = {
          isDisplayingSignInForm: false,
          firstNameError: "",
@@ -17,6 +18,7 @@ export default class LogIn extends React.Component {
          hasPasswordError: false,
       };
    }
+
    displaySignInInputs() {
       this.setState({ isDisplayingSignInForm: true });
    }
@@ -44,8 +46,6 @@ export default class LogIn extends React.Component {
 
    async setPasswordIsValidState(logInUserPasswordInput) {
       console.log(logInUserPasswordInput);
-      const uniqPasswordInputChars = [...new Set(logInUserPasswordInput)];
-      console.log(uniqPasswordInputChars);
       if (logInUserPasswordInput === "") {
          this.setState({
             passwordError: "Please create a password",
@@ -58,8 +58,9 @@ export default class LogIn extends React.Component {
 
    async createAndValidateUser() {
       //    get the value of the first name
-      const userFirstNameInput = document.getElementById("user-first-name")
-         .value;
+      const userFirstNameInput = document.getElementById(
+         "login-user-first-name"
+      ).value;
       console.log(userFirstNameInput);
       if (userFirstNameInput === "")
          this.setState({ firstNameError: "Field cannot be left blank" });
@@ -67,7 +68,8 @@ export default class LogIn extends React.Component {
          this.setState({ firstNameError: "" });
       }
       //    get the value of the last name
-      const userLastNameInput = document.getElementById("user-last-name").value;
+      const userLastNameInput = document.getElementById("login-user-last-name")
+         .value;
       console.log(userLastNameInput);
       if (userLastNameInput === "")
          this.setState({ lastNameError: "Field cannot be left blank" });
@@ -108,7 +110,7 @@ export default class LogIn extends React.Component {
 
    render() {
       return (
-         <div className="col-xl-5 col-sm-6 col-12 mt-2">
+         <div className="col-xl-5 col-sm-6 col-12 mt-6">
             <div className="card">
                <div className="card-body">
                   <h2 className="card-title">Welcome Back!</h2>
@@ -116,26 +118,28 @@ export default class LogIn extends React.Component {
                   {this.state.isDisplayingSignInForm && (
                      <div className="sign-in-form">
                         <h3>Time to check your knowledge!</h3>
-                        <label htmlFor="user-first-name">First Name</label>
+                        <label htmlFor="login-user-first-name">
+                           First Name
+                        </label>
                         <input
                            type="text"
                            className={classnames({
                               "form-control": true,
                               "is-invalid": this.state.firstNameError,
                            })}
-                           id="user-first-name"
+                           id="login-user-first-name"
                         />
                         <p className="text-danger">
                            {this.state.firstNameError}
                         </p>
-                        <label htmlFor="user-last-name">Last Name</label>
+                        <label htmlFor="login-user-last-name">Last Name</label>
                         <input
                            type="text"
                            className={classnames({
                               "form-control": true,
                               "is-invalid": this.state.lastNameError,
                            })}
-                           id="user-last-name"
+                           id="login-user-last-name"
                         />
                         <p className="text-danger">
                            {this.state.lastNameError}
@@ -173,15 +177,17 @@ export default class LogIn extends React.Component {
                               {this.state.passwordError}
                            </p>
                         )}
-                        <button
+                        <Link
+                           to="user-assigned-questions"
                            type="submit"
-                           className="form-control btn btn-primary mt-2"
+                           className="btn btn-primary mt-2 float-right"
+                           id="login-button"
                            onClick={() => {
                               this.createAndValidateUser();
                            }}
                         >
                            Log in
-                        </button>
+                        </Link>
                      </div>
                   )}
 
