@@ -10,13 +10,14 @@ export default class CreateQuestion extends React.Component {
       };
    }
 
-   addAnswer(i) {
+   // function renders a new answer input on the page
+   addNewAnswer(i) {
       const answerInputs = this.state.answerInputs;
       answerInputs.push(i);
       this.setState({ answerInputs: answerInputs });
    }
 
-   eachAnswer() {
+   createTheAnswer() {
       return (
          <>
             <div className={"form-group row"}>
@@ -26,7 +27,16 @@ export default class CreateQuestion extends React.Component {
                <div className="col-sm-10">
                   <input type="text" className="form-control" id="answer" />
                </div>
-               <button className="btn btn-warning">Delete</button>
+               <button
+                  className="btn btn-warning"
+                  type="button"
+                  id="delete-answer"
+                  // onClick={() => {
+                  //    this.deleteAnswer();
+                  // }}
+               >
+                  Delete
+               </button>
             </div>
          </>
       );
@@ -46,14 +56,25 @@ export default class CreateQuestion extends React.Component {
                <div className="col-sm-10">
                   <input type="text" className="form-control" id="answer" />
                </div>
-               <button className="btn btn-warning">Delete</button>
+               <button
+                  className="btn btn-warning"
+                  type="button"
+                  id="delete-answer"
+                  // onClick={() => {
+                  //    this.deleteAnswer();
+                  // }}
+               >
+                  Delete
+               </button>
             </div>
-            {this.state.answerInputs.map(this.eachAnswer)}
+
+            {/* state to add an answer input when add answer button is clicked */}
+            {this.state.answerInputs.map(this.createTheAnswer)}
             <button
                type="buttons"
                className="btn-success btn-lg ml-3"
                onClick={() => {
-                  this.addAnswer();
+                  this.addNewAnswer();
                }}
             >
                Add answer

@@ -45,10 +45,12 @@ export default class SignUp extends React.Component {
 
    checkForLocalPart(signUpUserPasswordInput, signUpUserEmailInput) {
       const localPart = signUpUserEmailInput.split("@")[0];
+      // allows for less than four common characters in the email input and the password input
       if (localPart.length < 4) return false;
       else return signUpUserPasswordInput.includes(localPart);
    }
 
+   // Password validation requirements
    async setPasswordIsValidState(
       signUpUserPasswordInput,
       signUpUserEmailInput
@@ -85,7 +87,8 @@ export default class SignUp extends React.Component {
       }
    }
 
-   async createAndValidateUser() {
+   // user object created after submission validation is performed
+   async verifyAndLogUser() {
       //    get the value of the first name
       const userFirstNameInput = document.getElementById("user-first-name")
          .value;
@@ -123,6 +126,7 @@ export default class SignUp extends React.Component {
          this.state.hasEmailError === false &&
          this.state.hasPasswordError === false
       ) {
+         // user object requirements
          const user = {
             createId: getUuid(),
             firstName: userFirstNameInput,
@@ -143,6 +147,7 @@ export default class SignUp extends React.Component {
                   <h2 className="card-title">New to the team?</h2>
                   <h3>Click below to sign up!</h3>
 
+                  {/* validation form  */}
                   {this.state.isDisplayingSignUpForm && (
                      <div className="sign-up-form">
                         <label htmlFor="user-first-name">First Name</label>
@@ -201,7 +206,7 @@ export default class SignUp extends React.Component {
                            className="form-control btn btn-primary mt-2"
                            id="go-time-button"
                            onClick={() => {
-                              this.createAndValidateUser();
+                              this.verifyAndLogUser();
                            }}
                         >
                            It's go time!
@@ -209,6 +214,7 @@ export default class SignUp extends React.Component {
                      </div>
                   )}
 
+                  {/* not displaying form until on click and trigger display inputs function  */}
                   {!this.state.isDisplayingSignUpForm && (
                      <button
                         type="button"

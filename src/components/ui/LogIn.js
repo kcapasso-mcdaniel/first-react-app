@@ -43,6 +43,7 @@ export default class LogIn extends React.Component {
       }
    }
 
+   // Function for password validation
    async setPasswordIsValidState(logInUserPasswordInput) {
       console.log(logInUserPasswordInput);
       if (logInUserPasswordInput === "") {
@@ -55,7 +56,7 @@ export default class LogIn extends React.Component {
       }
    }
 
-   async createAndValidateUser() {
+   async verifyAndLogUser() {
       //    get the value of the first name
       const userFirstNameInput = document.getElementById(
          "login-user-first-name"
@@ -182,7 +183,7 @@ export default class LogIn extends React.Component {
                            className="btn btn-primary mt-2 float-right"
                            id="login-button"
                            onClick={() => {
-                              this.createAndValidateUser();
+                              this.verifyAndLogUser();
                            }}
                         >
                            Log in

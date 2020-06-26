@@ -6,10 +6,12 @@ export default class Question extends React.Component {
       const props = this.props;
       return (
          <div className="col-12">
+            {/* rendering the title of the question on the page */}
             <h4 className="d-inline" key={questions.id}>
                {props.title}
             </h4>
 
+            {/* iterating over the data and rendering the answers on the page */}
             {props.answers.map((answer) => (
                <div className="custom-control custom-radio" key={answer.id}>
                   <input
