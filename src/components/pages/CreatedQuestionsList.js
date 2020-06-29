@@ -9,7 +9,9 @@ export default class CreatedQuestionsList extends React.Component {
    constructor(props) {
       super(props);
       axios
-         .get("https://run.mocky.io/v3/a70a0ab3-8fa7-42b5-bf28-2be34c41bfbb")
+         .get(
+            "https://raw.githubusercontent.com/kcapasso-mcdaniel/first-react-app/master/src/data/questions.json"
+         )
          .then(function (response) {
             // handle success
             console.log(response);
