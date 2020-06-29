@@ -2,8 +2,9 @@ import React from "react";
 import classnames from "classnames";
 import hash from "object-hash";
 import { v4 as getUuid } from "uuid";
+import { withRouter } from "react-router-dom";
 
-export default class LogIn extends React.Component {
+class LogIn extends React.Component {
    constructor(props) {
       super(props);
       console.log("new component");
@@ -105,6 +106,7 @@ export default class LogIn extends React.Component {
             createdOn: Date.now(),
          };
          console.log(user);
+         this.props.history.push("/create-question");
       }
    }
 
@@ -208,3 +210,4 @@ export default class LogIn extends React.Component {
       );
    }
 }
+export default withRouter(LogIn);

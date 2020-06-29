@@ -2,8 +2,9 @@ import React from "react";
 import classnames from "classnames";
 import hash from "object-hash";
 import { v4 as getUuid } from "uuid";
+import { withRouter } from "react-router-dom";
 
-export default class SignUp extends React.Component {
+class SignUp extends React.Component {
    constructor(props) {
       super(props);
       console.log("In a new class component");
@@ -88,7 +89,7 @@ export default class SignUp extends React.Component {
    }
 
    // user object created after submission validation is performed
-   async verifyAndLogUser() {
+   async validateAndSignUpUser() {
       //    get the value of the first name
       const userFirstNameInput = document.getElementById("user-first-name")
          .value;
@@ -136,6 +137,7 @@ export default class SignUp extends React.Component {
             createdOn: Date.now(),
          };
          console.log(user);
+         this.props.history.push("/user-assigned-questions");
       }
    }
 
@@ -206,7 +208,7 @@ export default class SignUp extends React.Component {
                            className="form-control btn btn-primary mt-2"
                            id="go-time-button"
                            onClick={() => {
-                              this.verifyAndLogUser();
+                              this.validateAndSignUpUser();
                            }}
                         >
                            It's go time!
@@ -233,3 +235,4 @@ export default class SignUp extends React.Component {
       );
    }
 }
+export default withRouter(SignUp);
