@@ -3,7 +3,7 @@ import "./style/master.scss";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Landing from "./components/pages/Landing";
 import CreateQuestion from "./components/pages/CreateQuestion";
-import CreatedQuestionList from "./components/pages/CreatedQuestionList";
+import CreatedQuestionsList from "./components/pages/CreatedQuestionsList";
 import UserAssignedQuestions from "./components/pages/UserAssignedQuestions";
 import NotFound from "./components/pages/NotFound";
 import UserReports from "./components/pages/UserReports";
@@ -19,7 +19,7 @@ function App() {
             <Route
                exact
                path="/created-question-list"
-               component={CreatedQuestionList}
+               component={CreatedQuestionsList}
             />
             <Route
                exact
