@@ -22,11 +22,13 @@ export default class UserAssignedQuestions extends React.Component {
                   <div className="col-12">
                      <form>
                         {questions.map((question) => {
+                           // console.log(question.id, question.title);
                            return (
                               <Question
                                  title={question.title}
                                  answers={question.answers}
                                  key={question.id}
+                                 id={question.id}
                               />
                            );
                         })}
