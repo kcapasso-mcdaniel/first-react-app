@@ -6,8 +6,8 @@ export default class CreateQuestion extends React.Component {
    constructor(props) {
       super(props);
       this.state = {
-         isAnswerInputDisplayed: false,
          answerInputs: [],
+         isAnswerDisplayed: true,
       };
    }
 
@@ -32,9 +32,6 @@ export default class CreateQuestion extends React.Component {
                   className="btn btn-warning"
                   type="button"
                   id="delete-answer"
-                  // onClick={() => {
-                  //    this.deleteAnswer();
-                  // }}
                >
                   Delete
                </button>
@@ -57,7 +54,8 @@ export default class CreateQuestion extends React.Component {
                         id="question"
                      />
                   </div>
-                  <div className="form-group row">
+
+                  {/* <div className={"form-group row"}>
                      <label
                         htmlFor="answer"
                         className="col-sm-2 col-form-label ml-2"
@@ -75,13 +73,13 @@ export default class CreateQuestion extends React.Component {
                         className="btn btn-warning"
                         type="button"
                         id="delete-answer"
-                        // onClick={() => {
-                        //    this.deleteAnswer();
-                        // }}
+                        onClick={() => {
+                           this.deleteAnswer();
+                        }}
                      >
                         Delete
                      </button>
-                  </div>
+                  </div> */}
 
                   {/* state to add an answer input when add answer button is clicked */}
                   {this.state.answerInputs.map(this.createTheAnswer)}

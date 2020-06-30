@@ -6,7 +6,7 @@ import LogIn from "../ui/LogIn";
 export default function Landing() {
    return (
       <div className="background-image">
-         <div className="container-flex">
+         <div className="container">
             <div className="row">
                <div className="col-12 mt-4">
                   <h1 className="d-inline">Knowledge</h1>
