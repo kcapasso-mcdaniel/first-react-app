@@ -2,25 +2,8 @@ import React from "react";
 import Navigation from "../ui/Navigation";
 import Question from "../ui/Question";
 import questions from "../../data/questions";
-import axios from "axios";
 
-export default class UserAssignedQuestions extends React.Component {
-   constructor(props) {
-      super(props);
-      axios
-         .get(
-            "https://raw.githubusercontent.com/kcapasso-mcdaniel/first-react-app/master/src/data/questions.json"
-         )
-         .then(function (response) {
-            // handle success
-            console.log(response);
-         })
-         .catch(function (error) {
-            // handle error
-            console.log(error);
-         });
-   }
-
+class AssignedQuestions extends React.Component {
    render() {
       return (
          <div className="container">
@@ -59,3 +42,5 @@ export default class UserAssignedQuestions extends React.Component {
       );
    }
 }
+
+export default AssignedQuestions;

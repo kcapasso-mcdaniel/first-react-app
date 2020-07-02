@@ -18,15 +18,22 @@ export default function Navigation() {
             role="navigation"
             aria-label="navigation"
          >
-            <Link to="/user-assigned-questions" type="button" className="btn">
-               Assigned to me
+            <Link to="/assigned-questions" type="button" className="btn">
+               Assigned Questions
             </Link>
             <Link
-               to="/created-question-list"
+               to="/create-question"
                type="button"
                className="btn tab-separator"
             >
-               Created by me
+               Create Question
+            </Link>
+            <Link
+               to="/question-summary"
+               type="button"
+               className="btn tab-separator"
+            >
+               Created Question Summary
             </Link>
             <Link
                to="/user-reports"

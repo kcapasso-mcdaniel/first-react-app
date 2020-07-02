@@ -180,7 +180,7 @@ class LogIn extends React.Component {
                            </p>
                         )}
                         <button
-                           to="user-assigned-questions"
+                           to="create-question"
                            type="submit"
                            className="btn btn-primary mt-2 float-right"
                            id="login-button"

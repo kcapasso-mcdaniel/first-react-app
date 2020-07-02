@@ -9,6 +9,8 @@ export default function UserReports() {
                <Navigation />
                <h3>User Search</h3>
                <input className="mb-3 py-2 w-100"></input>
+               <h3>Question Search</h3>
+               <input className="mb-3 py-2 w-100"></input>
                <div className="card">
                   <div className="card-body">
                      <h5 className="card-title">User Report</h5>

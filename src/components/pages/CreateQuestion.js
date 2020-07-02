@@ -80,7 +80,7 @@ export default class CreateQuestion extends React.Component {
                   </Link>
                   {/* this would also refresh the page */}
                   <Link
-                     to="created-question-list"
+                     to="question-summary"
                      type="submit"
                      className="btn-lg py-3 ml-3 btn-primary"
                   >
