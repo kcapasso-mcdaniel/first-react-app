@@ -2,20 +2,38 @@ import React from "react";
 import Navigation from "../ui/Navigation";
 import Question from "../ui/Question";
 import questions from "../../data/questions";
+import axios from "axios";
+import actions from "../../store/actions";
+import { connect } from "react-redux";
 
-class AssignedQuestions extends React.Component {
+class AssignQuestion extends React.Component {
+   constructor(props) {
+      super(props);
+      axios
+         .get(
+            "https://raw.githubusercontent.com/kcapasso-mcdaniel/first-react-app/master/src/data/questions.json"
+         )
+         .then(function (res) {
+            // handle success
+            console.log(res);
+            props.dispatch({
+               type: actions.STORE_QUESTIONS,
+               payload: res.data,
+            });
+         })
+         .catch(function (error) {
+            // handle error
+            console.log(error);
+         });
+   }
    render() {
       return (
          <div className="container">
             <div className="row">
                <div className="col-12">
                   <Navigation />
-                  <h4 className="mb-4">
-                     Please complete the quiz below. There is one correct answer
-                     for each question.
-                  </h4>
                   <div className="col-12">
-                     <form>
+                     <form className="mt-8">
                         {questions.map((question) => {
                            // console.log(question.id, question.title);
                            return (
@@ -43,4 +61,10 @@ class AssignedQuestions extends React.Component {
    }
 }
 
-export default AssignedQuestions;
+function mapStateToProps(state) {
+   return {
+      questions: state.questions,
+   };
+}
+
+export default connect(mapStateToProps)(AssignQuestion);

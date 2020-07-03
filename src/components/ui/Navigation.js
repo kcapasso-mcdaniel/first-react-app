@@ -18,8 +18,8 @@ export default function Navigation() {
             role="navigation"
             aria-label="navigation"
          >
-            <Link to="/assigned-questions" type="button" className="btn">
-               Assigned Questions
+            <Link to="/assign-question" type="button" className="btn">
+               Assign Question
             </Link>
             <Link
                to="/create-question"
@@ -29,17 +29,13 @@ export default function Navigation() {
                Create Question
             </Link>
             <Link
-               to="/question-summary"
+               to="/user-assignments"
                type="button"
                className="btn tab-separator"
             >
-               Created Question Summary
+               User Assignments
             </Link>
-            <Link
-               to="/user-reports"
-               type="button"
-               className="btn tab-separator"
-            >
+            <Link to="/reports" type="button" className="btn tab-separator">
                Reports
             </Link>
             <Link to="/" type="button" className="btn tab-separator">

@@ -9,7 +9,7 @@ class SignUp extends React.Component {
       super(props);
       console.log("In a new class component");
       this.state = {
-         isDisplayingSignUpForm: false,
+         isDisplayingSignUpForm: true,
          firstNameError: "",
          lastNameError: "",
          emailError: "",
@@ -205,13 +205,13 @@ class SignUp extends React.Component {
                         </p>
                         <button
                            type="submit"
-                           className="form-control btn btn-primary mt-2"
+                           className="form-control btn btn-secondary mt-2"
                            id="go-time-button"
                            onClick={() => {
                               this.validateAndSignUpUser();
                            }}
                         >
-                           It's go time!
+                           Sign Up
                         </button>
                      </div>
                   )}

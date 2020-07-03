@@ -19,6 +19,7 @@ export default function Landing() {
                      }}
                   />
                </div>
+
                <LogIn />
                <SignUp />
             </div>

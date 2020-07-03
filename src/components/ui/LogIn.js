@@ -9,7 +9,7 @@ class LogIn extends React.Component {
       super(props);
       console.log("new component");
       this.state = {
-         isDisplayingSignInForm: false,
+         isDisplayingSignInForm: true,
          firstNameError: "",
          lastNameError: "",
          emailError: "",
@@ -182,7 +182,7 @@ class LogIn extends React.Component {
                         <button
                            to="create-question"
                            type="submit"
-                           className="btn btn-primary mt-2 float-right"
+                           className="form-control btn btn-secondary mt-2"
                            id="login-button"
                            onClick={() => {
                               this.verifyAndLogUser();
