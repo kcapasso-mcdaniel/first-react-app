@@ -2,12 +2,14 @@ import React from "react";
 import Navigation from "../ui/Navigation";
 import caretDownIcon from "../../icons/caret-down.svg";
 import caretRightIcon from "../../icons/caret-right.svg";
+import questions from "../../data/questions";
+import UserReport from "../ui/UserReport";
 
 class UserAssignments extends React.Component {
    constructor(props) {
       super(props);
       this.state = {
-         showAssignedQuestions: false,
+         showReport: false,
          hideRightCaret: true,
          hideDownCaret: false,
       };
@@ -17,11 +19,12 @@ class UserAssignments extends React.Component {
       // click on right caret - hides right caret shows down caret and questions
 
       this.setState({
-         showAssignedQuestions: !this.state.showAssignedQuestions,
+         showReport: !this.state.showReport,
          hideRightCaret: !this.state.hideRightCaret,
          hideDownCaret: !this.state.hideDownCaret,
       });
    }
+
    render() {
       return (
          <div className="container">
@@ -54,17 +57,23 @@ class UserAssignments extends React.Component {
                            />
                         )}
 
-                        <h3 className="d-inline">User</h3>
+                        <h3 className="d-inline">User Report</h3>
 
-                        {this.state.showAssignedQuestions && (
-                           <>
-                              <ul className="card-text">
-                                 <li>Question Title</li>
-                                 <li>Question Title</li>
-                                 <li>Question Title</li>
-                                 <li>Question Title</li>
-                              </ul>
-                           </>
+                        {this.state.showReport && (
+                           <form className="mt-8">
+                              <h4>First Name</h4>
+                              <h4>Last Name</h4>
+                              {questions.map((question) => {
+                                 return (
+                                    <UserReport
+                                       title={question.title}
+                                       answers={question.answers}
+                                       key={question.id}
+                                       id={question.id}
+                                    />
+                                 );
+                              })}
+                           </form>
                         )}
                      </div>
                   </div>

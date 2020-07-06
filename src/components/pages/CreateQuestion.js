@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Navigation from "../ui/Navigation";
-import Answer from "../ui/Answer";
+import AddAnswer from "../ui/AddAnswer";
 import Question from "../ui/Question";
 
 export default class CreateQuestion extends React.Component {
@@ -10,6 +10,8 @@ export default class CreateQuestion extends React.Component {
       this.state = {
          addAnswerInput: [],
          isAnswerDisplayed: true,
+         questionInput: "",
+         answerInput: "",
       };
    }
 
@@ -18,6 +20,21 @@ export default class CreateQuestion extends React.Component {
       const addAnswerInput = [...this.state.addAnswerInput];
       addAnswerInput.push(i);
       this.setState({ addAnswerInput: addAnswerInput });
+   }
+
+   // create a question funcion  - need the value and id of question input, value and id of each answer input
+   // const questionInput = document.getElementById("question-input").value
+   // const answerInput = document.getElementById("answer-input").value
+   CreateQuestion() {
+      const questionInput = document.getElementById("question-input").value;
+      console.log("Question", questionInput);
+      const answerInput = document.getElementById("answer-input").value;
+      console.log("Answer", answerInput);
+      const newQuestion = {
+         question: questionInput,
+         answer: answerInput,
+      };
+      console.log(newQuestion);
    }
 
    render() {
@@ -31,35 +48,17 @@ export default class CreateQuestion extends React.Component {
                      <input
                         type="text"
                         className="form-control"
-                        id="question"
+                        id="question-input"
                      />
                   </div>
 
-                  {/* <div className={"form-group row"}>
-                     <label
-                        htmlFor="answer"
-                        className="col-sm-2 col-form-label ml-2"
-                     >
-                        Answer
-                     </label>
-                     <div className="col-sm-10">
-                        <input
-                           type="text"
-                           className="form-control"
-                           id="answer"
-                        />
-                     </div>
-                     <button
-                        className="btn btn-warning"
-                        type="button"
-                        id="delete-answer"
-                     >
-                        Delete
-                     </button>
-                  </div> */}
                   {/* state to add an answer input when add answer button is clicked */}
                   {this.state.addAnswerInput.map((answer, i) => (
-                     <Answer key={`answer-${i}`} index={i} />
+                     <AddAnswer
+                        key={`answer-${i}`}
+                        index={i}
+                        name="answer-input"
+                     />
                   ))}
                   <button
                      type="buttons"
@@ -79,13 +78,15 @@ export default class CreateQuestion extends React.Component {
                      Delete Question
                   </Link>
                   {/* this would also refresh the page */}
-                  <Link
-                     to="/assign-question"
+                  <button
                      type="submit"
                      className="btn-lg py-3 ml-3 btn-primary"
+                     onClick={() => {
+                        this.CreateQuestion();
+                     }}
                   >
                      Save
-                  </Link>
+                  </button>
                </div>
             </div>
          </div>

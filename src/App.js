@@ -5,8 +5,8 @@ import Landing from "./components/pages/Landing";
 import CreateQuestion from "./components/pages/CreateQuestion";
 import UserAssignments from "./components/pages/UserAssignments";
 import NotFound from "./components/pages/NotFound";
-import Reports from "./components/pages/Reports";
 import AssignQuestion from "./components/pages/AssignQuestion";
+import AssignedToMe from "./components/pages/AssignedToMe";
 
 function App() {
    return (
@@ -18,7 +18,7 @@ function App() {
             <Route exact path="/create-question" component={CreateQuestion} />
             <Route exact path="/user-assignments" component={UserAssignments} />
             <Route exact path="/assign-question" component={AssignQuestion} />
-            <Route exact path="/reports" component={Reports} />
+            <Route exact path="/assigned-to-me" component={AssignedToMe} />
             {/* if url does not match above render this component */}
             <Route component={NotFound} />
          </Switch>

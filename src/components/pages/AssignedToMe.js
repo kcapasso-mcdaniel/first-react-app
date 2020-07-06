@@ -1,16 +1,15 @@
 import React from "react";
 import Navigation from "../ui/Navigation";
+import Question from "../ui/Question";
 import questions from "../../data/questions";
 import axios from "axios";
 import actions from "../../store/actions";
 import { connect } from "react-redux";
 
-class AssignQuestion extends React.Component {
+class AssignedToMe extends React.Component {
    constructor(props) {
       super(props);
-      this.state = {
-         displayAnswers: false,
-      };
+
       axios
          .get(
             "https://raw.githubusercontent.com/kcapasso-mcdaniel/first-react-app/master/src/data/questions.json"
@@ -34,21 +33,27 @@ class AssignQuestion extends React.Component {
             <div className="row">
                <div className="col-12">
                   <Navigation />
-                  <div className="row">
-                     <div className="col-12">
+                  <div className="col-12">
+                     <form className="mt-8">
                         {questions.map((question) => {
-                           return question.title;
+                           // console.log(question.id, question.title);
+                           return (
+                              <Question
+                                 title={question.title}
+                                 answers={question.answers}
+                                 key={question.id}
+                                 id={question.id}
+                              />
+                           );
                         })}
-                     </div>
-                  </div>
-                  <div className="row">
-                     <div className="col-8">
-                        <input className="w-50 mt-4"></input>
 
-                        <button className="btn-sm mt-2 ml-4">Assign</button>
-
-                        <button className="btn-sm mt-2 ml-4">Edit</button>
-                     </div>
+                        <button
+                           type="submit"
+                           className="btn-lg btn-primary mt-4 ml-4"
+                        >
+                           Submit
+                        </button>
+                     </form>
                   </div>
                </div>
             </div>
@@ -63,4 +68,4 @@ function mapStateToProps(state) {
    };
 }
 
-export default connect(mapStateToProps)(AssignQuestion);
+export default connect(mapStateToProps)(AssignedToMe);

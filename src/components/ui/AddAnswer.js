@@ -3,6 +3,7 @@ import React from "react";
 export default class Answer extends React.Component {
    constructor(props) {
       super(props);
+
       this.state = {
          isAnswerShowing: true,
       };
@@ -18,13 +19,18 @@ export default class Answer extends React.Component {
             {this.state.isAnswerShowing && (
                <div className="form-group row">
                   <label
-                     htmlFor="answer"
+                     htmlFor="answer-input"
                      className="col-sm-2 col-form-label ml-2"
                   >
                      Answer
                   </label>
                   <div className="col-sm-10">
-                     <input type="text" className="form-control" id="answer" />
+                     <input
+                        type="text"
+                        name="answer-input"
+                        className="form-control"
+                        id="answer-input"
+                     />
                   </div>
 
                   <button

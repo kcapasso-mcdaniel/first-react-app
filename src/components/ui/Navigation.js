@@ -33,10 +33,14 @@ export default function Navigation() {
                type="button"
                className="btn tab-separator"
             >
-               User Assignments
+               User Report
             </Link>
-            <Link to="/reports" type="button" className="btn tab-separator">
-               Reports
+            <Link
+               to="/assigned-to-me"
+               type="button"
+               className="btn tab-separator"
+            >
+               Assigned To Me
             </Link>
             <Link to="/" type="button" className="btn tab-separator">
                Log Out
