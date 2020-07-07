@@ -6,6 +6,10 @@ import axios from "axios";
 import actions from "../../store/actions";
 import { connect } from "react-redux";
 
+// onClick Edit button - populate question on create-question page to edit
+// filter answers out so they are not shown on the page
+// assign the question to a user
+
 class AssignQuestion extends React.Component {
    constructor(props) {
       super(props);
@@ -29,6 +33,9 @@ class AssignQuestion extends React.Component {
             console.log(error);
          });
    }
+
+   editTheQuestion() {}
+
    render() {
       return (
          <div className="container">
@@ -54,7 +61,13 @@ class AssignQuestion extends React.Component {
                                           Assign
                                        </button>
 
-                                       <button className="btn-sm mt-2 ml-4">
+                                       <button
+                                          to="/create-question"
+                                          className="btn-sm mt-2 ml-4"
+                                          onClick={() => {
+                                             this.editTheQuestion();
+                                          }}
+                                       >
                                           Edit
                                        </button>
                                     </div>

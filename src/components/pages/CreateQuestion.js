@@ -1,8 +1,12 @@
 import React from "react";
-
 import Navigation from "../ui/Navigation";
 import AddAnswer from "../ui/AddAnswer";
 import Question from "../ui/Question";
+
+// edit question populated on page from AssignQuestion
+// for each answer created generate a new id for the answer
+// on click save log an object with the question and each answer
+// on click delete question refresh the page and clear the inputs
 
 export default class CreateQuestion extends React.Component {
    constructor(props) {

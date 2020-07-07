@@ -5,6 +5,9 @@ import caretRightIcon from "../../icons/caret-right.svg";
 import UserQuestions from "../ui/UserQuestions";
 import userQuestions from "../../data/user-questions";
 
+// populate the questions assigned to the user
+// show the user Answers selected
+
 class UserReport extends React.Component {
    constructor(props) {
       super(props);

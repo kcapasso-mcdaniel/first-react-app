@@ -1,15 +1,8 @@
 import React from "react";
-import userQuestions from "../../data/user-questions";
+
+// need to add state
 
 class UserQuestions extends React.Component {
-   constructor(props) {
-      super(props);
-      this.state = {
-         userQuestions: userQuestions,
-         displayUserAnswer: true,
-      };
-   }
-
    render() {
       const props = this.props;
       console.log("I am the props", props);
@@ -22,7 +15,7 @@ class UserQuestions extends React.Component {
                   return <p key={question.id}>{question.title} </p>;
                })}
             </h3>
-
+            {/* 
             <div className="custom-control custom-radio mt-4" key="{answer.id}">
                <input
                   type="radio"
@@ -36,7 +29,7 @@ class UserQuestions extends React.Component {
                >
                   "answer.text"
                </label>
-            </div>
+            </div> */}
          </div>
       );
    }

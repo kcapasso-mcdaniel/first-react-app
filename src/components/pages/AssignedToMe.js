@@ -6,9 +6,17 @@ import axios from "axios";
 import actions from "../../store/actions";
 import { connect } from "react-redux";
 
+// quiz function for each user input compare to the correct answer and return true or false
+// on click Submit - submit the form for the quiz and log and object with the user and the answers
+
 class AssignedToMe extends React.Component {
    constructor(props) {
       super(props);
+      // this.state = {
+      //    userAnswerInput: ,
+      //    correctAnswer: "" ,
+      //    userAnswer: "",
+      // };
 
       axios
          .get(
@@ -27,6 +35,7 @@ class AssignedToMe extends React.Component {
             console.log(error);
          });
    }
+
    render() {
       return (
          <div className="container">
