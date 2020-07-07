@@ -2,10 +2,10 @@ import React from "react";
 import Navigation from "../ui/Navigation";
 import caretDownIcon from "../../icons/caret-down.svg";
 import caretRightIcon from "../../icons/caret-right.svg";
-import questions from "../../data/questions";
-import UserReport from "../ui/UserReport";
+import UserQuestions from "../ui/UserQuestions";
+import userQuestions from "../../data/user-questions";
 
-class UserAssignments extends React.Component {
+class UserReport extends React.Component {
    constructor(props) {
       super(props);
       this.state = {
@@ -60,17 +60,22 @@ class UserAssignments extends React.Component {
                         <h3 className="d-inline">User Report</h3>
 
                         {this.state.showReport && (
-                           <form className="mt-8">
-                              <h4>First Name</h4>
-                              <h4>Last Name</h4>
-                              {questions.map((question) => {
+                           <form className="mt-2">
+                              {userQuestions.map((user) => {
                                  return (
-                                    <UserReport
-                                       title={question.title}
-                                       answers={question.answers}
-                                       key={question.id}
-                                       id={question.id}
-                                    />
+                                    <div key={user}>
+                                       <h3>{user.firstName} </h3>
+                                       <h3>{user.lastName}</h3>
+                                       <ul>
+                                          <UserQuestions
+                                             questions={user.questions}
+                                             userAnswerId={
+                                                user.questions.userAnswerId
+                                             }
+                                             key={user.id}
+                                          />
+                                       </ul>
+                                    </div>
                                  );
                               })}
                            </form>
@@ -84,4 +89,4 @@ class UserAssignments extends React.Component {
    }
 }
 
-export default UserAssignments;
+export default UserReport;

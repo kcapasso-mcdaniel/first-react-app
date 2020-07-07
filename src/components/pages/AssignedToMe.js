@@ -50,6 +50,7 @@ class AssignedToMe extends React.Component {
                         <button
                            type="submit"
                            className="btn-lg btn-primary mt-4 ml-4"
+                           // onClick = check for correct answers and submit answers
                         >
                            Submit
                         </button>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+
 import Navigation from "../ui/Navigation";
 import AddAnswer from "../ui/AddAnswer";
 import Question from "../ui/Question";
@@ -37,6 +37,8 @@ export default class CreateQuestion extends React.Component {
       console.log(newQuestion);
    }
 
+   refreshThePage() {}
+
    render() {
       return (
          <div className="container">
@@ -56,6 +58,7 @@ export default class CreateQuestion extends React.Component {
                   {this.state.addAnswerInput.map((answer, i) => (
                      <AddAnswer
                         key={`answer-${i}`}
+                        id={`answer-${i}`}
                         index={i}
                         name="answer-input"
                      />
@@ -70,13 +73,9 @@ export default class CreateQuestion extends React.Component {
                      Add answer
                   </button>
                   {/* this would refresh the page */}
-                  <Link
-                     to="/create-question"
-                     type="reset"
-                     className="btn-lg btn-warning py-3 ml-3"
-                  >
+                  <button type="reset" className="btn-lg btn-warning py-3 ml-3">
                      Delete Question
-                  </Link>
+                  </button>
                   {/* this would also refresh the page */}
                   <button
                      type="submit"

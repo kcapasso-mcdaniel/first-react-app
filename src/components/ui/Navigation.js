@@ -28,11 +28,7 @@ export default function Navigation() {
             >
                Create Question
             </Link>
-            <Link
-               to="/user-assignments"
-               type="button"
-               className="btn tab-separator"
-            >
+            <Link to="/user-report" type="button" className="btn tab-separator">
                User Report
             </Link>
             <Link

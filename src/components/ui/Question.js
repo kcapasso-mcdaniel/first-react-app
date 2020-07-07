@@ -11,7 +11,7 @@ class Question extends React.Component {
             {/* iterating over the data and rendering the answers on the page */}
             {props.answers.map((answer) => (
                <div
-                  className="custom-control custom-radio mt-2"
+                  className="custom-control custom-radio mt-4"
                   key={answer.id}
                >
                   <input
