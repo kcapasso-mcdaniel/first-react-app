@@ -29,35 +29,9 @@
             ],
             "assignedAt": "",
             "answeredAt": "",
-            "userAnswerId": ""
+            "userAnswerId": "639a0c33-e5b5-495c-8629-cc7713276104"
          },
-         {
-            "id": "0b93005c-22b2-4f37-bf26-1c3ae20af4c9",
-            "createdByUserId": "61d7d1be-4ada-4c1a-81c0-c6b82f45132e",
-            "title": "Nomad Billecart-Salmon champagne is",
-            "correctAnswerId": "f5f4408f-e01c-49bf-8e6f-dbecccaa9307",
-            "answers": [
-               {
-                  "id": "cc3b6269-6af5-482e-a7d8-b36ca0105a8f",
-                  "text": "Demi-Sec"
-               },
-               {
-                  "id": "a02bdff3-d5a3-44da-aedd-d1bbbbefb27a",
-                  "text": "Brut"
-               },
-               {
-                  "id": "f5f4408f-e01c-49bf-8e6f-dbecccaa9307",
-                  "text": "Extra-Brut"
-               },
-               {
-                  "id": "38df8b30-1d12-4784-a4a6-8d49ffc034e0",
-                  "text": "Brut-Natural"
-               }
-            ],
-            "assignedAt": "",
-            "answeredAt": "",
-            "userAnswerId": ""
-         },
+
          {
             "id": "21343c01-1298-4c3a-a62a-69999d77c28b",
             "createdByUserId": "61d7d1be-4ada-4c1a-81c0-c6b82f45132e",
@@ -83,7 +57,7 @@
             ],
             "assignedAt": "",
             "answeredAt": "",
-            "userAnswerId": ""
+            "userAnswerId": "50b6bece-071b-4441-a934-0613284db46f"
          },
          {
             "id": "720ff1fa-e4c3-4b75-b0ee-66cbcd5336bd",
@@ -110,7 +84,7 @@
             ],
             "assignedAt": "",
             "answeredAt": "",
-            "userAnswerId": ""
+            "userAnswerId": "0ba4cf08-016a-4fe8-891b-4b2e5de1f05a"
          }
       ]
    }

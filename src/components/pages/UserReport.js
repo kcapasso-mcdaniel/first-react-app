@@ -2,10 +2,8 @@ import React from "react";
 import Navigation from "../ui/Navigation";
 import caretDownIcon from "../../icons/caret-down.svg";
 import caretRightIcon from "../../icons/caret-right.svg";
-// import UserQuestions from "../ui/UserQuestions";
-import Question from "../ui/Question";
+import UserQuestions from "../ui/UserQuestions";
 import userQuestions from "../../data/user-questions";
-import questions from "../../data/questions";
 
 // populate the questions assigned to the user
 // show the user Answers selected
@@ -68,19 +66,7 @@ class UserReport extends React.Component {
 
                         {this.state.showUserReport && (
                            <form className="mt-2">
-                              {questions.map((question) => {
-                                 // console.log(question.id, question.title);
-                                 return (
-                                    <Question
-                                       title={question.title}
-                                       answers={question.answers}
-                                       key={question.id}
-                                       id={question.id}
-                                    />
-                                 );
-                              })}
-
-                              {/* {userQuestions.map((user) => {
+                              {userQuestions.map((user) => {
                                  return (
                                     <div key={user}>
                                        <h3>{user.firstName} </h3>
@@ -88,15 +74,12 @@ class UserReport extends React.Component {
                                        <ul>
                                           <UserQuestions
                                              questions={user.questions}
-                                             userAnswerId={
-                                                user.questions.answer
-                                             }
                                              key={user.id}
                                           />
                                        </ul>
                                     </div>
                                  );
-                              })} */}
+                              })}
                            </form>
                         )}
                      </div>

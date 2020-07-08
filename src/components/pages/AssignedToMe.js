@@ -22,7 +22,7 @@ class AssignedToMe extends React.Component {
    }
 
    // Function finds the id of the question and returns the user's answer associated with that question id
-   // Lodash find() method is used to itterate over the collection of data and return the first
+   // Lodash find() method is used to itterate over the collection of data and return the first element of the object that is truthy
    setUserAnswer(e) {
       console.log("test", e.target.value);
       const questionId = e.target.name;
@@ -36,6 +36,7 @@ class AssignedToMe extends React.Component {
       // const question = filteredQuestions[0];
       // console.log("test", question);
 
+      // user.questions is the collection, the function is being invoked on the question
       const question = find(user.questions, (question) => {
          return question.id === questionId;
       });

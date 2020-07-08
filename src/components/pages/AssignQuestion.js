@@ -3,7 +3,6 @@ import Navigation from "../ui/Navigation";
 import questions from "../../data/questions";
 import { withRouter } from "react-router-dom";
 
-// filter answers out so they are not shown on the page
 // assign the question to a user
 
 class AssignQuestion extends React.Component {
@@ -21,17 +20,6 @@ class AssignQuestion extends React.Component {
       }
       this.props.history.push("/create-question");
    }
-
-   /*
-      filter out the answers using state 
-      change the state of the questions to not display the answers from the component 
-      const copyOfQuestions = {...this.state.questions}
-      const onlyQuestionTitle = copyOfQuestions.filter((question) => {
-         return question.title;
-      })
-   
-
-   */
 
    render() {
       return (
@@ -71,6 +59,11 @@ class AssignQuestion extends React.Component {
                               </>
                            );
                         })}
+                        <div className="col-6">
+                           <button className="btn-lg btn-success mt-2">
+                              Create New
+                           </button>
+                        </div>
                      </div>
                   </div>
                </div>
