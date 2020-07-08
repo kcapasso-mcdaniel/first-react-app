@@ -106,7 +106,7 @@ class LogIn extends React.Component {
             createdOn: Date.now(),
          };
          console.log(user);
-         this.props.history.push("/create-question");
+         this.props.history.push("/assign-question");
       }
    }
 

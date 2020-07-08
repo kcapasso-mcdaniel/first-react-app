@@ -1,4 +1,4 @@
-[
+const users = [
    {
       id: "61d7d1be-4ada-4c1a-81c0-c6b82f45132e",
       firstName: "Kate",
@@ -24,3 +24,5 @@
       createdOn: 1593035148640,
    },
 ];
+
+export default users;

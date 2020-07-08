@@ -2,8 +2,10 @@ import React from "react";
 import Navigation from "../ui/Navigation";
 import caretDownIcon from "../../icons/caret-down.svg";
 import caretRightIcon from "../../icons/caret-right.svg";
-import UserQuestions from "../ui/UserQuestions";
+// import UserQuestions from "../ui/UserQuestions";
+import Question from "../ui/Question";
 import userQuestions from "../../data/user-questions";
+import questions from "../../data/questions";
 
 // populate the questions assigned to the user
 // show the user Answers selected
@@ -12,9 +14,10 @@ class UserReport extends React.Component {
    constructor(props) {
       super(props);
       this.state = {
-         showReport: false,
+         showUserReport: false,
          hideRightCaret: true,
          hideDownCaret: false,
+         userQuestions: userQuestions,
       };
    }
 
@@ -22,7 +25,7 @@ class UserReport extends React.Component {
       // click on right caret - hides right caret shows down caret and questions
 
       this.setState({
-         showReport: !this.state.showReport,
+         showUserReport: !this.state.showUserReport,
          hideRightCaret: !this.state.hideRightCaret,
          hideDownCaret: !this.state.hideDownCaret,
       });
@@ -34,6 +37,7 @@ class UserReport extends React.Component {
             <div className="row">
                <div className="col-12">
                   <Navigation />
+                  <input className="form-control mb-4" type="text"></input>
                   <div className="card">
                      <div className="card-body">
                         {/* toggle when click icon next to user show assigned questions */}
@@ -62,9 +66,21 @@ class UserReport extends React.Component {
 
                         <h3 className="d-inline">User Report</h3>
 
-                        {this.state.showReport && (
+                        {this.state.showUserReport && (
                            <form className="mt-2">
-                              {userQuestions.map((user) => {
+                              {questions.map((question) => {
+                                 // console.log(question.id, question.title);
+                                 return (
+                                    <Question
+                                       title={question.title}
+                                       answers={question.answers}
+                                       key={question.id}
+                                       id={question.id}
+                                    />
+                                 );
+                              })}
+
+                              {/* {userQuestions.map((user) => {
                                  return (
                                     <div key={user}>
                                        <h3>{user.firstName} </h3>
@@ -73,14 +89,14 @@ class UserReport extends React.Component {
                                           <UserQuestions
                                              questions={user.questions}
                                              userAnswerId={
-                                                user.questions.userAnswerId
+                                                user.questions.answer
                                              }
                                              key={user.id}
                                           />
                                        </ul>
                                     </div>
                                  );
-                              })}
+                              })} */}
                            </form>
                         )}
                      </div>

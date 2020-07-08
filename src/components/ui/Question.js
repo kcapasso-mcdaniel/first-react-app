@@ -17,8 +17,13 @@ class Question extends React.Component {
                   <input
                      type="radio"
                      name={props.id}
+                     // ^ this is the question id
                      id={answer.id}
+                     value={answer.id}
                      className="custom-control-input"
+                     onChange={(e) => {
+                        this.props.setUserAnswer(e);
+                     }}
                   />
                   <label
                      className="custom-control-label mb-4"
