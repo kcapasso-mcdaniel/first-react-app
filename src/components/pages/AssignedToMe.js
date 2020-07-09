@@ -1,13 +1,11 @@
 import React from "react";
 import Navigation from "../ui/Navigation";
 import Question from "../ui/Question";
-import userQuestions from "../../data/user-questions";
-import find from "lodash/find";
+// import userQuestions from "../../data/user-questions";
+// import find from "lodash/find";
 import axios from "axios";
-import actions from "../../store/actions";
 import { connect } from "react-redux";
 
-// quiz function for each user input compare to the correct answer and return true or false
 // on click Submit - submit the form for the quiz and log and object with the user and the answers
 // use userquestions and change how it sent to the question component
 
@@ -15,23 +13,23 @@ class AssignedToMe extends React.Component {
    constructor(props) {
       super(props);
       this.state = {
-         currentUser: userQuestions[0],
+         currentUser: [],
       };
       this.setUserAnswer = this.setUserAnswer.bind(this);
+   }
 
+   componentDidMount() {
       axios
          .get(
             "https://raw.githubusercontent.com/kcapasso-mcdaniel/first-react-app/master/src/data/user-questions.json"
          )
-         .then(function (res) {
+         .then((res) => {
             // handle success
-            console.log(res);
-            props.dispatch({
-               type: actions.STORE_USER_QUESTIONS,
-               payload: res.data,
-            });
+            const userQuestions = res.data[0];
+            console.log(userQuestions);
+            this.setState({ currentUser: userQuestions });
          })
-         .catch(function (error) {
+         .catch((error) => {
             // handle error
             console.log(error);
          });
@@ -42,37 +40,40 @@ class AssignedToMe extends React.Component {
    }
 
    // Function finds the id of the question and returns the user's answer associated with that question id
-   // Lodash find() method is used to itterate over the collection of data and return the first element of the object that is truthy
+
    setUserAnswer(e) {
-      console.log("test", e.target.value);
+      // console.log("test", e.target.value);
 
       const questionId = e.target.name;
       const answerId = e.target.id;
       const user = { ...this.state.currentUser };
+      console.log("what", user);
 
-      // filter the questions checking the question id to the name props.id
+      // returns only the first question in the array that matches the criteria
       // const filteredQuestions = user.questions.filter((question) => {
       //    return question.id === questionId;
       // });
-
-      // // c
+      // console.log("here", filteredQuestions);
+      // // pulls the question out of the object starting at the first index
       // const question = filteredQuestions[0];
-      // console.log("test", question);
+      // console.log("result", question);
 
-      // user.questions is the collection, the function is being invoked on the question
-      const question = find(user.questions, (question) => {
+      // use the JavaScript find method
+      const question = user.questions.find((question) => {
          return question.id === questionId;
       });
-      console.log("found", question);
 
       // set the userAnswerId property of question to the target answer id
       question.userAnswerId = answerId;
-      console.log("answer", question);
+      // console.log("answer", question);
 
+      // returns index of the element function is invoked on
       const indexOfQuestion = user.questions.findIndex((question) => {
          return question.id === questionId;
       });
+      console.log("testy", indexOfQuestion);
 
+      // set the state to user
       user.questions[indexOfQuestion].userAnswerId = answerId;
       this.setState({ currentUser: user });
    }
@@ -85,18 +86,19 @@ class AssignedToMe extends React.Component {
                   <Navigation />
                   <div className="col-12">
                      <form className="mt-8">
-                        {this.state.currentUser.questions.map((question) => {
-                           // console.log(question.id, question.title);
-                           return (
-                              <Question
-                                 title={question.title}
-                                 answers={question.answers}
-                                 key={question.id}
-                                 id={question.id}
-                                 setUserAnswer={this.setUserAnswer}
-                              />
-                           );
-                        })}
+                        {this.state.currentUser.questions &&
+                           this.state.currentUser.questions.map((question) => {
+                              // console.log(question.id, question.title);
+                              return (
+                                 <Question
+                                    title={question.title}
+                                    answers={question.answers}
+                                    key={question.id}
+                                    id={question.id}
+                                    setUserAnswer={this.setUserAnswer}
+                                 />
+                              );
+                           })}
 
                         <button
                            type="submit"
@@ -122,7 +124,3 @@ function mapStateToProps(state) {
    };
 }
 export default connect(mapStateToProps)(AssignedToMe);
-
-// _.find(users, function(o) => {
-// return o.age < 40;
-// });

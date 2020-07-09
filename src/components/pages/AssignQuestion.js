@@ -24,6 +24,7 @@ class AssignQuestion extends React.Component {
             // handle success
             console.log(res);
             const questions = res.data;
+            console.log(res.data);
             this.setState({ questionsToAssign: questions });
             // props.dispatch({
             //    //dispatch actions takes type and payload
