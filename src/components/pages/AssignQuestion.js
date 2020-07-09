@@ -1,7 +1,8 @@
 import React from "react";
 import Navigation from "../ui/Navigation";
-import questions from "../../data/questions";
-import { withRouter } from "react-router-dom";
+import axios from "axios";
+// import actions from "../../store/actions";
+import { connect } from "react-redux";
 
 // assign the question to a user
 
@@ -9,9 +10,31 @@ class AssignQuestion extends React.Component {
    constructor(props) {
       super(props);
       this.state = {
-         questionsToAssign: questions, // use the questions data here because it is a general list of questions to be assigned
+         questionsToAssign: [], // use the questions data here because it is a general list of questions to be assigned
          clickedTheEditButton: false,
       };
+   }
+
+   componentDidMount() {
+      axios
+         .get(
+            "https://raw.githubusercontent.com/kcapasso-mcdaniel/first-react-app/master/src/data/questions.json"
+         )
+         .then((res) => {
+            // handle success
+            console.log(res);
+            const questions = res.data;
+            this.setState({ questionsToAssign: questions });
+            // props.dispatch({
+            //    //dispatch actions takes type and payload
+            //    type: actions.STORE_QUESTIONS,
+            //    payload: res.data,
+            // });
+         })
+         .catch((error) => {
+            // handle error
+            console.log(error);
+         });
    }
 
    // onClick Edit button - populate question on create-question page to edit
@@ -73,4 +96,10 @@ class AssignQuestion extends React.Component {
    }
 }
 
-export default withRouter(AssignQuestion);
+function mapStateToProps(state) {
+   //take the global state and map certain things to these properties in local state
+   return {
+      questions: state.questions,
+   };
+}
+export default connect(mapStateToProps)(AssignQuestion);

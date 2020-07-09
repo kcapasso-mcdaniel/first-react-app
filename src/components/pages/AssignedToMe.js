@@ -3,6 +3,9 @@ import Navigation from "../ui/Navigation";
 import Question from "../ui/Question";
 import userQuestions from "../../data/user-questions";
 import find from "lodash/find";
+import axios from "axios";
+import actions from "../../store/actions";
+import { connect } from "react-redux";
 
 // quiz function for each user input compare to the correct answer and return true or false
 // on click Submit - submit the form for the quiz and log and object with the user and the answers
@@ -15,6 +18,23 @@ class AssignedToMe extends React.Component {
          currentUser: userQuestions[0],
       };
       this.setUserAnswer = this.setUserAnswer.bind(this);
+
+      axios
+         .get(
+            "https://raw.githubusercontent.com/kcapasso-mcdaniel/first-react-app/master/src/data/user-questions.json"
+         )
+         .then(function (res) {
+            // handle success
+            console.log(res);
+            props.dispatch({
+               type: actions.STORE_USER_QUESTIONS,
+               payload: res.data,
+            });
+         })
+         .catch(function (error) {
+            // handle error
+            console.log(error);
+         });
    }
 
    submitUserAnswers() {
@@ -29,10 +49,12 @@ class AssignedToMe extends React.Component {
       const answerId = e.target.id;
       const user = { ...this.state.currentUser };
 
+      // filter the questions checking the question id to the name props.id
       // const filteredQuestions = user.questions.filter((question) => {
       //    return question.id === questionId;
       // });
 
+      // // c
       // const question = filteredQuestions[0];
       // console.log("test", question);
 
@@ -91,4 +113,13 @@ class AssignedToMe extends React.Component {
    }
 }
 
-export default AssignedToMe;
+function mapStateToProps(state) {
+   return {
+      userQuestions: state.userQuestions,
+   };
+}
+export default connect(mapStateToProps)(AssignedToMe);
+
+// _.find(users, function(o) => {
+// return o.age < 40;
+// });

@@ -4,6 +4,9 @@ import caretDownIcon from "../../icons/caret-down.svg";
 import caretRightIcon from "../../icons/caret-right.svg";
 import UserQuestions from "../ui/UserQuestions";
 import userQuestions from "../../data/user-questions";
+import axios from "axios";
+// import actions from "../../store/actions";
+import { connect } from "react-redux";
 
 // populate the questions assigned to the user
 // show the user Answers selected
@@ -11,12 +14,32 @@ import userQuestions from "../../data/user-questions";
 class UserReport extends React.Component {
    constructor(props) {
       super(props);
+
       this.state = {
          showUserReport: false,
          hideRightCaret: true,
          hideDownCaret: false,
-         userQuestions: userQuestions,
+         userQuestions: [],
       };
+
+      axios
+         .get(
+            "https://raw.githubusercontent.com/kcapasso-mcdaniel/first-react-app/master/src/data/user-questions.json"
+         )
+         .then(function (res) {
+            // handle success
+            console.log(res);
+            const userQuestions = res.data;
+            this.setState({ userQuestions: userQuestions });
+            // props.dispatch({
+            //    type: actions.STORE_USER_QUESTIONS,
+            //    payload: res.data,
+            // });
+         })
+         .catch(function (error) {
+            // handle error
+            console.log(error);
+         });
    }
 
    toggleAssignedQuestions() {
@@ -35,7 +58,11 @@ class UserReport extends React.Component {
             <div className="row">
                <div className="col-12">
                   <Navigation />
-                  <input className="form-control mb-4" type="text"></input>
+                  <input
+                     className="form-control mb-4"
+                     type="text"
+                     placeholder="Type user name to search"
+                  ></input>
                   <div className="card">
                      <div className="card-body">
                         {/* toggle when click icon next to user show assigned questions */}
@@ -91,4 +118,9 @@ class UserReport extends React.Component {
    }
 }
 
-export default UserReport;
+function mapStateToProps(state) {
+   return {
+      userQuestions: state.userQuestions,
+   };
+}
+export default connect(mapStateToProps)(UserReport);
