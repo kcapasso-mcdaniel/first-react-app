@@ -45,6 +45,7 @@ class AssignedToMe extends React.Component {
    // Lodash find() method is used to itterate over the collection of data and return the first element of the object that is truthy
    setUserAnswer(e) {
       console.log("test", e.target.value);
+
       const questionId = e.target.name;
       const answerId = e.target.id;
       const user = { ...this.state.currentUser };
@@ -64,12 +65,14 @@ class AssignedToMe extends React.Component {
       });
       console.log("found", question);
 
+      // set the userAnswerId property of question to the target answer id
       question.userAnswerId = answerId;
       console.log("answer", question);
 
       const indexOfQuestion = user.questions.findIndex((question) => {
          return question.id === questionId;
       });
+
       user.questions[indexOfQuestion].userAnswerId = answerId;
       this.setState({ currentUser: user });
    }
