@@ -26,6 +26,7 @@ class AssignedToMe extends React.Component {
          .then((res) => {
             // handle success
             const userQuestions = res.data[0];
+            // object with a collection of data
             console.log(userQuestions);
             this.setState({ currentUser: userQuestions });
          })
@@ -47,7 +48,7 @@ class AssignedToMe extends React.Component {
       const questionId = e.target.name;
       const answerId = e.target.id;
       const user = { ...this.state.currentUser };
-      console.log("what", user);
+      // console.log("what", user);
 
       // returns only the first question in the array that matches the criteria
       // const filteredQuestions = user.questions.filter((question) => {
@@ -62,6 +63,7 @@ class AssignedToMe extends React.Component {
       const question = user.questions.find((question) => {
          return question.id === questionId;
       });
+      console.log("better", question);
 
       // set the userAnswerId property of question to the target answer id
       question.userAnswerId = answerId;
