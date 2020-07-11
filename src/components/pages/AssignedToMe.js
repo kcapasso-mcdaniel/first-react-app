@@ -54,16 +54,14 @@ class AssignedToMe extends React.Component {
       // const filteredQuestions = user.questions.filter((question) => {
       //    return question.id === questionId;
       // });
-      // console.log("here", filteredQuestions);
+
       // // pulls the question out of the object starting at the first index
       // const question = filteredQuestions[0];
-      // console.log("result", question);
 
       // use the JavaScript find method
       const question = user.questions.find((question) => {
          return question.id === questionId;
       });
-      console.log("better", question);
 
       // set the userAnswerId property of question to the target answer id
       question.userAnswerId = answerId;
