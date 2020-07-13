@@ -1,6 +1,6 @@
 import React from "react";
 import Navigation from "../ui/Navigation";
-import AddAnswer from "../ui/AddAnswer";
+import Answer from "../ui/Answer";
 // import Question from "../ui/Question";
 import { withRouter } from "react-router-dom";
 import { v4 as getUuid } from "uuid";
@@ -73,7 +73,7 @@ class CreateQuestion extends React.Component {
 
                   {/* change to Answer */}
                   {this.state.question.answers.map((answer) => {
-                     return <AddAnswer key={answer.id} id={answer.id} />;
+                     return <Answer key={answer.id} id={answer.id} />;
                   })}
                   <button
                      type="button"

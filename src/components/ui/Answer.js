@@ -2,7 +2,7 @@ import React from "react";
 
 //
 
-export default class AddAnswer extends React.Component {
+export default class Answer extends React.Component {
    constructor(props) {
       super(props);
 
