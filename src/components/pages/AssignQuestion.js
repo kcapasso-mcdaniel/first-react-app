@@ -45,6 +45,10 @@ class AssignQuestion extends React.Component {
       this.props.history.push("/create-question");
    }
 
+   goToCreateQuestion() {
+      this.props.history.push("/create-question");
+   }
+
    render() {
       return (
          <div className="container">
@@ -60,7 +64,7 @@ class AssignQuestion extends React.Component {
 
                                  <div className="row">
                                     <div className="col-8 mb-4">
-                                       <input className="w-50 mt-4"></input>
+                                       <input className="w-25 mt-4"></input>
 
                                        <div className="col-2 d-inline">
                                           <button className="btn-sm btn-warning mt-2">
@@ -84,7 +88,10 @@ class AssignQuestion extends React.Component {
                            );
                         })}
                         <div className="col-6">
-                           <button className="btn-lg btn-success mt-2">
+                           <button
+                              className="btn-lg btn-success mt-2"
+                              onClick={() => this.goToCreateQuestion()}
+                           >
                               Create New
                            </button>
                         </div>

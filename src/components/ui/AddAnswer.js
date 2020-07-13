@@ -2,31 +2,38 @@ import React from "react";
 
 //
 
-export default class Answer extends React.Component {
+export default class AddAnswer extends React.Component {
    constructor(props) {
       super(props);
 
       this.state = {
-         isAnswerShowing: true,
+         addNewAnswer: true,
       };
+   }
+
+   saveAnswer() {
+      // get the text from the input
+      // create an id for this answer
+      // add answer to the answers array inside of this.state.question
    }
 
    // delete the input on the page
    deleteAnswer() {
-      this.setState({ isAnswerShowing: !this.state.isAnswerShowing });
+      // remove current answer from the state of answerInputs
+      // use pull possibly
+      this.setState({ addNewAnswer: !this.state.addNewAnswer });
    }
    render() {
       return (
          <>
-            {this.state.isAnswerShowing && (
-               <div className="form-group row">
-                  <label
-                     htmlFor="answer-input"
-                     className="col-sm-2 col-form-label ml-2"
-                  >
-                     Answer
-                  </label>
-                  <div className="col-sm-10">
+            {this.state.addNewAnswer && (
+               <div className="row">
+                  <div className="col-sm-2">
+                     <label htmlFor="answer-input" className="col-form-label">
+                        Answer
+                     </label>
+                  </div>
+                  <div className="col-sm-6">
                      <input
                         type="text"
                         name="answer-input"
@@ -34,15 +41,26 @@ export default class Answer extends React.Component {
                         id="answer-input"
                      />
                   </div>
-
-                  <button
-                     className="btn btn-warning"
-                     type="button"
-                     id="delete-answer"
-                     onClick={() => this.deleteAnswer(this.props.index)}
-                  >
-                     Delete
-                  </button>
+                  <div className="col-sm-2">
+                     <button
+                        className="btn btn-primary btn-block"
+                        type="button"
+                        id="save-answer"
+                        onClick={() => this.saveAnswer()}
+                     >
+                        Save
+                     </button>
+                  </div>
+                  <div className="col-sm-2">
+                     <button
+                        className="btn btn-warning btn-block"
+                        type="button"
+                        id="delete-answer"
+                        onClick={() => this.deleteAnswer()}
+                     >
+                        Delete
+                     </button>
+                  </div>
                </div>
             )}
          </>

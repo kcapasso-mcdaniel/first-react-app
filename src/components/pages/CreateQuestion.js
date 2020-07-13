@@ -1,35 +1,37 @@
 import React from "react";
 import Navigation from "../ui/Navigation";
 import AddAnswer from "../ui/AddAnswer";
-import Question from "../ui/Question";
+// import Question from "../ui/Question";
+import { withRouter } from "react-router-dom";
+import { v4 as getUuid } from "uuid";
+import { connect } from "react-redux";
+import cloneDeep from "lodash/cloneDeep";
 
 // edit question populated on page from AssignQuestion
 // for each answer created generate a new id for the answer
 // on click save log an object with the question and each answer
 // on click delete question refresh the page and clear the inputs
 
-export default class CreateQuestion extends React.Component {
+class CreateQuestion extends React.Component {
    constructor(props) {
       super(props);
       this.state = {
-         addAnswerInput: [],
+         numOfAnswers: 0,
          isAnswerDisplayed: true,
-         questionInput: "",
-         answerInput: "",
+         question: {
+            id: getUuid(),
+            createdByUserId: this.props.currentUser.id,
+            title: "", // update when user types into title input
+            correctAnswerId: "", //update when user selects correct answer
+            answers: [],
+            assignees: [],
+         },
+         answerFields: [],
       };
    }
 
-   // function renders a new answer input on the page
-   addNewAnswer(i) {
-      const addAnswerInput = [...this.state.addAnswerInput];
-      addAnswerInput.push(i);
-      this.setState({ addAnswerInput: addAnswerInput });
-   }
-
-   // create a question funcion  - need the value and id of question input, value and id of each answer input
-   // const questionInput = document.getElementById("question-input").value
-   // const answerInput = document.getElementById("answer-input").value
-   CreateQuestion() {
+   // create a question function  - need the value and id of question input, value and id of each answer input
+   createQuestion() {
       const questionInput = document.getElementById("question-input").value;
       console.log("Question", questionInput);
       const answerInput = document.getElementById("answer-input").value;
@@ -41,7 +43,18 @@ export default class CreateQuestion extends React.Component {
       console.log(newQuestion);
    }
 
-   refreshThePage() {}
+   deleteThisAnswer() {
+      console.log("answer deleted");
+   }
+
+   setAnswerId() {
+      const question = cloneDeep(this.state.question);
+      const answerId = getUuid();
+      const answer = { id: answerId };
+      question.answers.push(answer);
+      // updating question state
+      this.setState({ question });
+   }
 
    render() {
       return (
@@ -49,7 +62,7 @@ export default class CreateQuestion extends React.Component {
             <div className="row">
                <div className="col-12">
                   <Navigation />
-                  <div className="form-group" key={Question.id}>
+                  <div className="form-group">
                      <label htmlFor="formGroupExampleInput">Question</label>
                      <input
                         type="text"
@@ -58,26 +71,27 @@ export default class CreateQuestion extends React.Component {
                      />
                   </div>
 
-                  {/* state to add an answer input when add answer button is clicked */}
-                  {this.state.addAnswerInput.map((answer, i) => (
-                     <AddAnswer
-                        key={`answer-${i}`}
-                        id={`answer-${i}`}
-                        index={i}
-                        name="answer-input"
-                     />
-                  ))}
+                  {/* change to Answer */}
+                  {this.state.question.answers.map((answer) => {
+                     return <AddAnswer key={answer.id} id={answer.id} />;
+                  })}
                   <button
-                     type="buttons"
+                     type="button"
                      className="btn-success btn-lg ml-3"
                      onClick={() => {
-                        this.addNewAnswer();
+                        this.setAnswerId();
                      }}
                   >
                      Add answer
                   </button>
                   {/* this would refresh the page */}
-                  <button type="reset" className="btn-lg btn-warning py-3 ml-3">
+                  <button
+                     type="button"
+                     className="btn-lg btn-warning py-3 ml-3"
+                     // onClick={() => {
+                     //    this.deleteTheQuestion();
+                     // }}
+                  >
                      Delete Question
                   </button>
                   {/* this would also refresh the page */}
@@ -85,7 +99,7 @@ export default class CreateQuestion extends React.Component {
                      type="submit"
                      className="btn-lg py-3 ml-3 btn-primary"
                      onClick={() => {
-                        this.CreateQuestion();
+                        this.createQuestion();
                      }}
                   >
                      Save
@@ -96,3 +110,11 @@ export default class CreateQuestion extends React.Component {
       );
    }
 }
+
+function mapStateToProps(state) {
+   return {
+      currentUser: state.currentUser,
+   };
+}
+
+export default withRouter(connect(mapStateToProps)(CreateQuestion));

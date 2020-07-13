@@ -116,11 +116,11 @@ class LogIn extends React.Component {
             )
             .then((res) => {
                // store what we get from api
-               const currentUser = res.data;
+               const currentUser = res.data[0];
                console.log(currentUser);
                this.props.dispatch({
                   type: actions.UPDATE_CURRENT_USER,
-                  payload: res.data,
+                  payload: currentUser,
                });
             })
             .catch((error) => {
