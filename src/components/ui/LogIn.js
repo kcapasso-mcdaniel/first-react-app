@@ -2,6 +2,9 @@ import React from "react";
 import classnames from "classnames";
 import hash from "object-hash";
 import { v4 as getUuid } from "uuid";
+import axios from "axios";
+import actions from "../../store/actions";
+import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
 class LogIn extends React.Component {
@@ -106,6 +109,24 @@ class LogIn extends React.Component {
             createdOn: Date.now(),
          };
          console.log(user);
+         // Mimic API response
+         axios
+            .get(
+               "https://raw.githubusercontent.com/kcapasso-mcdaniel/white-bear-mpa/master/src/mock-data.js/user.json"
+            )
+            .then((res) => {
+               // store what we get from api
+               const currentUser = res.data;
+               console.log(currentUser);
+               this.props.dispatch({
+                  type: actions.UPDATE_CURRENT_USER,
+                  payload: res.data,
+               });
+            })
+            .catch((error) => {
+               // handle error
+               console.log(error);
+            });
          this.props.history.push("/assign-question");
       }
    }
@@ -210,4 +231,8 @@ class LogIn extends React.Component {
       );
    }
 }
-export default withRouter(LogIn);
+function mapStateToProps(state) {
+   return {};
+}
+
+export default withRouter(connect(mapStateToProps)(LogIn));

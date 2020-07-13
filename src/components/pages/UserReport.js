@@ -3,7 +3,7 @@ import Navigation from "../ui/Navigation";
 import caretDownIcon from "../../icons/caret-down.svg";
 import caretRightIcon from "../../icons/caret-right.svg";
 import UserQuestions from "../ui/UserQuestions";
-import userQuestions from "../../data/user-questions";
+// import userQuestions from "../../data/user-questions";
 import axios from "axios";
 // import actions from "../../store/actions";
 import { connect } from "react-redux";
@@ -26,7 +26,7 @@ class UserReport extends React.Component {
          .get(
             "https://raw.githubusercontent.com/kcapasso-mcdaniel/first-react-app/master/src/data/user-questions.json"
          )
-         .then(function (res) {
+         .then((res) => {
             // handle success
             console.log(res);
             const userQuestions = res.data;
@@ -36,7 +36,7 @@ class UserReport extends React.Component {
             //    payload: res.data,
             // });
          })
-         .catch(function (error) {
+         .catch((error) => {
             // handle error
             console.log(error);
          });
@@ -93,7 +93,7 @@ class UserReport extends React.Component {
 
                         {this.state.showUserReport && (
                            <form className="mt-2">
-                              {userQuestions.map((user) => {
+                              {this.state.userQuestions.map((user) => {
                                  return (
                                     <div key={user}>
                                        <h3>{user.firstName} </h3>

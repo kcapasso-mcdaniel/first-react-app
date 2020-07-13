@@ -4,7 +4,7 @@ import actions from "../actions";
 export default function currentUser(state = {}, action) {
    // action.payload(do the thing that we said), action.type(what is the action type)
    switch (action.type) {
-      case actions.STORE_CURRENT_USER: //sending a string to tell me what to do
+      case actions.UPDATE_CURRENT_USER: //sending a string to tell me what to do
          return action.payload; // [{}, {}]
       default:
          return state;
