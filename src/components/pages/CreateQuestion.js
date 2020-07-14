@@ -28,20 +28,12 @@ class CreateQuestion extends React.Component {
          },
          answerFields: [],
       };
+      // pass function through children - this refer to create question
+      this.setAnswerText = this.setAnswerText.bind(this);
    }
 
    // create a question function  - need the value and id of question input, value and id of each answer input
-   createQuestion() {
-      const questionInput = document.getElementById("question-input").value;
-      console.log("Question", questionInput);
-      const answerInput = document.getElementById("answer-input").value;
-      console.log("Answer", answerInput);
-      const newQuestion = {
-         question: questionInput,
-         answer: answerInput,
-      };
-      console.log(newQuestion);
-   }
+   createQuestion() {}
 
    deleteThisAnswer() {
       console.log("answer deleted");
@@ -53,6 +45,16 @@ class CreateQuestion extends React.Component {
       const answer = { id: answerId };
       question.answers.push(answer);
       // updating question state
+      this.setState({ question });
+   }
+
+   setAnswerText(answerId, text) {
+      const question = cloneDeep(this.state.question);
+      const answer = question.answers.find((answer) => {
+         return answer.id === answerId;
+      });
+      console.log(answer);
+      answer.text = text;
       this.setState({ question });
    }
 
@@ -73,37 +75,51 @@ class CreateQuestion extends React.Component {
 
                   {/* change to Answer */}
                   {this.state.question.answers.map((answer) => {
-                     return <Answer key={answer.id} id={answer.id} />;
+                     return (
+                        <Answer
+                           key={answer.id}
+                           id={answer.id}
+                           setAnswerText={this.setAnswerText}
+                        />
+                     );
                   })}
-                  <button
-                     type="button"
-                     className="btn-success btn-lg ml-3"
-                     onClick={() => {
-                        this.setAnswerId();
-                     }}
-                  >
-                     Add answer
-                  </button>
-                  {/* this would refresh the page */}
-                  <button
-                     type="button"
-                     className="btn-lg btn-warning py-3 ml-3"
-                     // onClick={() => {
-                     //    this.deleteTheQuestion();
-                     // }}
-                  >
-                     Delete Question
-                  </button>
-                  {/* this would also refresh the page */}
-                  <button
-                     type="submit"
-                     className="btn-lg py-3 ml-3 btn-primary"
-                     onClick={() => {
-                        this.createQuestion();
-                     }}
-                  >
-                     Save
-                  </button>
+                  <div className="row">
+                     <div className="col-sm-12">
+                        <button
+                           type="button"
+                           className="btn-lg btn-success"
+                           onClick={() => {
+                              this.setAnswerId();
+                           }}
+                        >
+                           Add Answer
+                        </button>
+                     </div>
+                  </div>
+                  <div className="row mt-4">
+                     <div className="col-sm-6">
+                        <button
+                           type="button"
+                           className="btn-lg btn-warning btn-block"
+                           // onClick={() => {
+                           //    this.deleteTheQuestion();
+                           // }}
+                        >
+                           Delete Question
+                        </button>
+                     </div>
+                     <div className="col-sm-6">
+                        <button
+                           type="button"
+                           className="btn-lg btn-primary btn-block float-right"
+                           onClick={() => {
+                              this.createQuestion();
+                           }}
+                        >
+                           Save Question
+                        </button>
+                     </div>
+                  </div>
                </div>
             </div>
          </div>

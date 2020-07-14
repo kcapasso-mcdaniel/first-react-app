@@ -13,8 +13,10 @@ export default class Answer extends React.Component {
 
    saveAnswer() {
       // get the text from the input
-      // create an id for this answer
+      const text = document.getElementById(this.props.id).value;
+      console.log(text);
       // add answer to the answers array inside of this.state.question
+      this.props.setAnswerText(this.props.id, text);
    }
 
    // delete the input on the page
@@ -22,6 +24,7 @@ export default class Answer extends React.Component {
       // remove current answer from the state of answerInputs
       // use pull possibly
       this.setState({ addNewAnswer: !this.state.addNewAnswer });
+      // this.props.setDeleteAnswer();
    }
    render() {
       return (
@@ -29,21 +32,23 @@ export default class Answer extends React.Component {
             {this.state.addNewAnswer && (
                <div className="row">
                   <div className="col-sm-2">
-                     <label htmlFor="answer-input" className="col-form-label">
+                     <label
+                        htmlFor={this.props.id}
+                        className="col-form-label mr-2"
+                     >
                         Answer
                      </label>
                   </div>
                   <div className="col-sm-6">
                      <input
                         type="text"
-                        name="answer-input"
                         className="form-control"
-                        id="answer-input"
+                        id={this.props.id}
                      />
                   </div>
                   <div className="col-sm-2">
                      <button
-                        className="btn btn-primary btn-block"
+                        className="btn-sm btn-primary btn-block mb-2"
                         type="button"
                         id="save-answer"
                         onClick={() => this.saveAnswer()}
@@ -53,7 +58,7 @@ export default class Answer extends React.Component {
                   </div>
                   <div className="col-sm-2">
                      <button
-                        className="btn btn-warning btn-block"
+                        className="btn-sm btn-danger btn-block mb-2"
                         type="button"
                         id="delete-answer"
                         onClick={() => this.deleteAnswer()}
