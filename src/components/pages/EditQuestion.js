@@ -6,18 +6,22 @@ import { withRouter } from "react-router-dom";
 import { v4 as getUuid } from "uuid";
 import { connect } from "react-redux";
 import cloneDeep from "lodash/cloneDeep";
+import axios from "axios";
+import actions from "../../store/actions";
+import Question from "../ui/Question";
 
 // edit question populated on page from AssignQuestion
 // for each answer created generate a new id for the answer
 // on click save log an object with the question and each answer
 // on click delete question refresh the page and clear the inputs
 
-class CreateQuestion extends React.Component {
+class EditQuestion extends React.Component {
    constructor(props) {
       super(props);
       this.state = {
          numOfAnswers: 0,
          isAnswerDisplayed: true,
+         questionToEdit: {},
          question: {
             id: getUuid(),
             createdByUserId: this.props.currentUser.id,
@@ -30,6 +34,54 @@ class CreateQuestion extends React.Component {
       };
       // pass function through children - this refer to create question
       this.setAnswerText = this.setAnswerText.bind(this);
+   }
+
+   componentDidMount() {
+      // props object from react router - (match, history, and one more )
+      // match is a way to grab the url and do something with it - params hold anything that you put with a (:) id (that's what we name it after the colan)
+      const id = this.props.match.params.id;
+      console.log("this is the id", id);
+      axios
+         .get(
+            "https://raw.githubusercontent.com/kcapasso-mcdaniel/first-react-app/master/src/data/questions.json"
+         )
+         .then((res) => {
+            // handle success
+            console.log(res);
+            const questions = res.data;
+            console.log(res.data);
+            const filteredQuestion = questions.filter((question) => {
+               return question.id === id;
+            });
+            console.log("filter", filteredQuestion);
+            const editableQuestion = filteredQuestion.map((question) => {
+               return (
+                  <Question
+                     title={question.title}
+                     answers={question.answers}
+                     key={question.id}
+                     id={question.id}
+                  />
+               );
+            });
+            console.log("edit", editableQuestion);
+            this.props.dispatch({
+               //dispatch actions takes type and payload
+               type: actions.STORE_QUESTIONS,
+               payload: questions,
+            });
+         })
+         .catch((error) => {
+            // handle error
+            console.log(error);
+         });
+   }
+
+   // create a question function  - need the value and id of question input, value and id of each answer input
+   createQuestion() {}
+
+   deleteThisAnswer() {
+      console.log("answer deleted");
    }
 
    setAnswerId() {
@@ -51,10 +103,6 @@ class CreateQuestion extends React.Component {
       this.setState({ question });
    }
 
-   setDeletedAnswer() {
-      // splice the answer from the array of answers within the question
-   }
-
    render() {
       return (
          <div className="container">
@@ -62,7 +110,7 @@ class CreateQuestion extends React.Component {
                <div className="col-12">
                   <Navigation />
                   <div className="form-group">
-                     <label htmlFor="formGroupExampleInput">Question</label>
+                     <label htmlFor="form-control">Question</label>
                      <input
                         type="text"
                         className="form-control"
@@ -70,6 +118,12 @@ class CreateQuestion extends React.Component {
                      />
                   </div>
 
+                  <div className="col-sm-12">
+                     <Answer />
+                     <Answer />
+                     <Answer />
+                     <Answer />
+                  </div>
                   {/* change to Answer */}
                   {this.state.question.answers.map((answer) => {
                      return (
@@ -109,9 +163,9 @@ class CreateQuestion extends React.Component {
                         <button
                            type="button"
                            className="btn-lg btn-primary btn-block float-right"
-                           // onClick={() => {
-                           //    this.createQuestion();
-                           // }}
+                           onClick={() => {
+                              this.createQuestion();
+                           }}
                         >
                            Save Question
                         </button>
@@ -127,7 +181,8 @@ class CreateQuestion extends React.Component {
 function mapStateToProps(state) {
    return {
       currentUser: state.currentUser,
+      questions: state.questions,
    };
 }
 
-export default withRouter(connect(mapStateToProps)(CreateQuestion));
+export default withRouter(connect(mapStateToProps)(EditQuestion));

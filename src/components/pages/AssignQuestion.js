@@ -1,7 +1,7 @@
 import React from "react";
 import Navigation from "../ui/Navigation";
 import axios from "axios";
-// import actions from "../../store/actions";
+import actions from "../../store/actions";
 import { connect } from "react-redux";
 
 // assign the question to a user
@@ -26,11 +26,11 @@ class AssignQuestion extends React.Component {
             const questions = res.data;
             console.log(res.data);
             this.setState({ questionsToAssign: questions });
-            // props.dispatch({
-            //    //dispatch actions takes type and payload
-            //    type: actions.STORE_QUESTIONS,
-            //    payload: res.data,
-            // });
+            this.props.dispatch({
+               //dispatch actions takes type and payload
+               type: actions.STORE_QUESTIONS,
+               payload: questions,
+            });
          })
          .catch((error) => {
             // handle error
@@ -39,10 +39,11 @@ class AssignQuestion extends React.Component {
    }
 
    // onClick Edit button - populate question on create-question page to edit
-   editTheQuestion() {
+   // send the question with it
+   editTheQuestion(id) {
       if (this.state.clickedTheEditButton === true) {
       }
-      this.props.history.push("/create-question");
+      this.props.history.push("/edit-question/" + id);
    }
 
    goToCreateQuestion() {
@@ -76,7 +77,9 @@ class AssignQuestion extends React.Component {
                                              className="btn-sm btn-danger mt-2"
                                              type="button"
                                              onClick={() => {
-                                                this.editTheQuestion();
+                                                this.editTheQuestion(
+                                                   question.id
+                                                );
                                              }}
                                           >
                                              Edit
