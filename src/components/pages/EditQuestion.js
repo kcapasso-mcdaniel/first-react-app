@@ -68,7 +68,7 @@ class EditQuestion extends React.Component {
                         defaultValue={this.props.editableQuestion.title}
                      />
                   </div>
-
+                  {/* for every answer render the answer component */}
                   <div className="col-sm-12">
                      {/* {this.state.editableQuestion.answers.map((answer) => {
                         return (
@@ -79,7 +79,6 @@ class EditQuestion extends React.Component {
                            />
                         );
                      })} */}
-                     {/* for every answer render the answer component */}
                   </div>
                   {this.state.question.answers.map((answer) => {
                      return (
