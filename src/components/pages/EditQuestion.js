@@ -75,17 +75,20 @@ class EditQuestion extends React.Component {
                            <Answer
                               key={answer.id}
                               id={answer.id}
-                              defaultValue={this.props.editableQuestion.answer}
+                              defaultValue={answer.text}
                            />
                         );
                      })} */}
+                     {/* local state to initialize manipulate copy  */}
                   </div>
-                  {this.state.question.answers.map((answer) => {
+                  {this.props.editableQuestion.answers.map((answer) => {
+                     console.log(answer.text);
                      return (
                         <Answer
                            key={answer.id}
                            id={answer.id}
                            setAnswerText={this.setAnswerText}
+                           defaultValue={answer.text}
                         />
                      );
                   })}

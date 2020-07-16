@@ -44,7 +44,7 @@ export default class Answer extends React.Component {
                         type="text"
                         className="form-control"
                         id={this.props.id}
-                        defaultValue={this.props.ids}
+                        defaultValue={this.props.defaultValue}
                      />
                   </div>
                   <div className="col-sm-2">
