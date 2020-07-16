@@ -138,15 +138,6 @@ const questions = [
             answeredAt: 1592689330968,
             userAnswerId: "50b6bece-071b-4441-a934-0613284db46f",
          },
-         {
-            id: "8d7dce3e-91ca-4e28-a8fc-c966ad770f29",
-            firstName: "Brandon",
-            lastName: "McDaniel",
-            email: "brandon@gmail.com",
-            assignedAt: 1592689255364,
-            answeredAt: 1592689339379,
-            userAnswerId: "b67056bb-07e5-470f-b6d8-7a78b2e89b06",
-         },
       ],
    },
    {
