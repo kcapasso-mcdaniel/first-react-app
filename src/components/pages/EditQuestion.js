@@ -6,9 +6,6 @@ import { withRouter } from "react-router-dom";
 import { v4 as getUuid } from "uuid";
 import { connect } from "react-redux";
 import cloneDeep from "lodash/cloneDeep";
-import axios from "axios";
-import actions from "../../store/actions";
-import Question from "../ui/Question";
 
 // edit question populated on page from AssignQuestion
 // for each answer created generate a new id for the answer
@@ -21,7 +18,8 @@ class EditQuestion extends React.Component {
       this.state = {
          numOfAnswers: 0,
          isAnswerDisplayed: true,
-         questionToEdit: {},
+         editableQuestion: {},
+         filteredQuestion: [],
          question: {
             id: getUuid(),
             createdByUserId: this.props.currentUser.id,
@@ -34,54 +32,6 @@ class EditQuestion extends React.Component {
       };
       // pass function through children - this refer to create question
       this.setAnswerText = this.setAnswerText.bind(this);
-   }
-
-   componentDidMount() {
-      // props object from react router - (match, history, and one more )
-      // match is a way to grab the url and do something with it - params hold anything that you put with a (:) id (that's what we name it after the colan)
-      const id = this.props.match.params.id;
-      console.log("this is the id", id);
-      axios
-         .get(
-            "https://raw.githubusercontent.com/kcapasso-mcdaniel/first-react-app/master/src/data/questions.json"
-         )
-         .then((res) => {
-            // handle success
-            console.log(res);
-            const questions = res.data;
-            console.log(res.data);
-            const filteredQuestion = questions.filter((question) => {
-               return question.id === id;
-            });
-            console.log("filter", filteredQuestion);
-            const editableQuestion = filteredQuestion.map((question) => {
-               return (
-                  <Question
-                     title={question.title}
-                     answers={question.answers}
-                     key={question.id}
-                     id={question.id}
-                  />
-               );
-            });
-            console.log("edit", editableQuestion);
-            this.props.dispatch({
-               //dispatch actions takes type and payload
-               type: actions.STORE_QUESTIONS,
-               payload: questions,
-            });
-         })
-         .catch((error) => {
-            // handle error
-            console.log(error);
-         });
-   }
-
-   // create a question function  - need the value and id of question input, value and id of each answer input
-   createQuestion() {}
-
-   deleteThisAnswer() {
-      console.log("answer deleted");
    }
 
    setAnswerId() {
@@ -115,16 +65,22 @@ class EditQuestion extends React.Component {
                         type="text"
                         className="form-control"
                         id="question-input"
+                        defaultValue={this.props.editableQuestion.title}
                      />
                   </div>
 
                   <div className="col-sm-12">
-                     <Answer />
-                     <Answer />
-                     <Answer />
-                     <Answer />
+                     {/* {this.state.editableQuestion.answers.map((answer) => {
+                        return (
+                           <Answer
+                              key={answer.id}
+                              id={answer.id}
+                              defaultValue={this.props.editableQuestion.answer}
+                           />
+                        );
+                     })} */}
+                     {/* for every answer render the answer component */}
                   </div>
-                  {/* change to Answer */}
                   {this.state.question.answers.map((answer) => {
                      return (
                         <Answer
@@ -182,6 +138,7 @@ function mapStateToProps(state) {
    return {
       currentUser: state.currentUser,
       questions: state.questions,
+      editableQuestion: state.editableQuestion,
    };
 }
 

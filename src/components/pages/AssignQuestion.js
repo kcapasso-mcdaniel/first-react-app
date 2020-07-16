@@ -41,8 +41,16 @@ class AssignQuestion extends React.Component {
    // onClick Edit button - populate question on create-question page to edit
    // send the question with it
    editTheQuestion(id) {
-      if (this.state.clickedTheEditButton === true) {
-      }
+      const editableQuestion = this.state.questionsToAssign.filter(
+         (question) => {
+            return question.id === id;
+         }
+      )[0];
+      console.log("filter", editableQuestion);
+      this.props.dispatch({
+         type: actions.STORE_EDITABLE_QUESTION,
+         payload: editableQuestion,
+      });
       this.props.history.push("/edit-question/" + id);
    }
 

@@ -6,6 +6,7 @@ const initialState = {
    currentUser: {},
    questions: {},
    userQuestions: {},
+   editableQuestion: {},
 };
 
 const store = createStore(combineReducers, initialState, composeWithDevTools());

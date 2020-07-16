@@ -9,7 +9,7 @@ class Question extends React.Component {
             {/* rendering the title of the question on the page */}
             <h3 className="d-inline">{props.title}</h3>
             {/* iterating over the data and rendering the answers on the page */}
-            {props.answers.map((answer) => (
+            {props.answers.map((answer, index) => (
                <div
                   className="custom-control custom-radio mt-4"
                   key={answer.id}
@@ -19,7 +19,7 @@ class Question extends React.Component {
                      name={props.id}
                      // ^ this is the question id
                      id={answer.id}
-                     value={answer.id}
+                     value={answer[index].id}
                      className="custom-control-input"
                      onChange={(e) => {
                         this.props.setUserAnswer(e);

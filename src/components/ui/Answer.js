@@ -25,6 +25,7 @@ export default class Answer extends React.Component {
       // use pull possibly
       this.setState({ addNewAnswer: !this.state.addNewAnswer });
    }
+
    render() {
       return (
          <>
@@ -43,6 +44,7 @@ export default class Answer extends React.Component {
                         type="text"
                         className="form-control"
                         id={this.props.id}
+                        defaultValue={this.props.ids}
                      />
                   </div>
                   <div className="col-sm-2">
