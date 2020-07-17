@@ -21,7 +21,7 @@ class AssignedToMe extends React.Component {
    componentDidMount() {
       axios
          .get(
-            "https://raw.githubusercontent.com/kcapasso-mcdaniel/first-react-app/master/src/data/user-questions.json"
+            "https://raw.githubusercontent.com/kcapasso-mcdaniel/first-react-app/master/src/data/mock-data-json/user-questions.json"
          )
          .then((res) => {
             // handle success

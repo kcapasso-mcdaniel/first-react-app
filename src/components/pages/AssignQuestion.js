@@ -18,7 +18,7 @@ class AssignQuestion extends React.Component {
    componentDidMount() {
       axios
          .get(
-            "https://raw.githubusercontent.com/kcapasso-mcdaniel/first-react-app/master/src/data/questions.json"
+            "https://raw.githubusercontent.com/kcapasso-mcdaniel/first-react-app/master/src/data/mock-data-json/questions.json"
          )
          .then((res) => {
             // handle success

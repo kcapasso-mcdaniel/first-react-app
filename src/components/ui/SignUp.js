@@ -144,7 +144,7 @@ class SignUp extends React.Component {
          // Mimic API response
          axios
             .get(
-               "https://raw.githubusercontent.com/kcapasso-mcdaniel/first-react-app/master/src/data/user.json"
+               "https://raw.githubusercontent.com/kcapasso-mcdaniel/first-react-app/master/src/data/mock-data-json/user.json"
             )
             .then((res) => {
                // store what we get from api

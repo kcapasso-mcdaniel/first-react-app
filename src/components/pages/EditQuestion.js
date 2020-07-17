@@ -70,15 +70,6 @@ class EditQuestion extends React.Component {
                   </div>
                   {/* for every answer render the answer component */}
                   <div className="col-sm-12">
-                     {/* {this.state.editableQuestion.answers.map((answer) => {
-                        return (
-                           <Answer
-                              key={answer.id}
-                              id={answer.id}
-                              defaultValue={answer.text}
-                           />
-                        );
-                     })} */}
                      {/* local state to initialize manipulate copy  */}
                   </div>
                   {this.props.editableQuestion.answers.map((answer) => {
