@@ -10,6 +10,39 @@ class Navigation extends React.Component {
    }
 
    render() {
+      const url = window.location.pathname;
+      const tabActiveOnAssignQuestion = (url) => {
+         // if url contains this string highlight tab accordingly
+         if (url.indexOf("assign-question") > 0) {
+            console.log("this tab is active");
+            return "tab-active";
+         } else return "";
+      };
+      const tabActiveOnCreateQuestion = (url) => {
+         // if url contains this string highlight tab accordingly
+         if (
+            url.indexOf("create-question") > 0 ||
+            url.indexOf("edit-question") > 0
+         ) {
+            console.log("this tab is active");
+            return "tab-active";
+         } else return "";
+      };
+      const tabActiveOnUserReport = (url) => {
+         // if url contains this string highlight tab accordingly
+         if (url.indexOf("user-report") > 0) {
+            console.log("this tab is active");
+            return "tab-active";
+         } else return "";
+      };
+      const tabActiveOnAssignedToMe = (url) => {
+         // if url contains this string highlight tab accordingly
+         if (url.indexOf("assigned-to-me") > 0) {
+            console.log("this tab is active");
+            return "tab-active";
+         } else return "";
+      };
+
       return (
          <>
             <div className="col-12 offset-4">
@@ -25,30 +58,42 @@ class Navigation extends React.Component {
                role="navigation"
                aria-label="navigation"
             >
-               <Link to="/assign-question" type="button" className="btn">
+               <Link
+                  to="/assign-question"
+                  type="button"
+                  className={`btn ${tabActiveOnAssignQuestion(url)}`}
+               >
                   Assign Question
                </Link>
+
                <Link
                   to="/create-question"
                   type="button"
-                  className="btn tab-separator"
+                  className={`btn tab-separator ${tabActiveOnCreateQuestion(
+                     url
+                  )}`}
                >
                   Create Question
                </Link>
+
                <Link
                   to="/user-report"
                   type="button"
-                  className="btn tab-separator"
+                  className={`btn tab-separator ${tabActiveOnUserReport(url)}`}
                >
                   User Report
                </Link>
+               {/* {`btn btn-secondary ${tabActiveOnCreate(url)}`} */}
                <Link
                   to="/assigned-to-me"
                   type="button"
-                  className="btn tab-separator"
+                  className={`btn tab-separator ${tabActiveOnAssignedToMe(
+                     url
+                  )}`}
                >
                   Assigned To Me
                </Link>
+               {/* {`btn btn-secondary ${tabActiveOnCreate(url)}`} */}
                <Link
                   to="/"
                   type="button"

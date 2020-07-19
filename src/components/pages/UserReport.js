@@ -21,7 +21,9 @@ class UserReport extends React.Component {
          hideDownCaret: false,
          userQuestions: [],
       };
+   }
 
+   componentDidMount() {
       axios
          .get(
             "https://raw.githubusercontent.com/kcapasso-mcdaniel/first-react-app/master/src/data/mock-data-json/user-questions.json"

@@ -28,3 +28,9 @@ h3 {
    background-size: cover;
    min-height: 100vh;
 }
+.tab-separator {
+   border-left: 1px $gray-800 solid;
+}
+.tab-active {
+   text-decoration: underline;
+}
